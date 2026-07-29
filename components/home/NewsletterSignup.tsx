@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, PenLine } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { newsletterSchema } from "@/lib/validation";
 import { newsletter as newsletterCopy } from "@/content/homepage";
 import { HoneypotField } from "@/components/forms/FormField";
@@ -47,10 +47,6 @@ export function NewsletterSignup() {
 
   return (
     <div id="newsletter" className="radius-organic-2 scroll-mt-24 border border-clay-500/30 bg-cream-50 p-6 text-charcoal-900 sm:p-8">
-      <div className="mb-4 flex items-center gap-2 text-clay-600">
-        <PenLine className="h-4 w-4" aria-hidden="true" />
-        <span className="text-xs font-semibold uppercase tracking-[0.14em]">{newsletterCopy.eyebrow}</span>
-      </div>
       <h2 className="font-heading text-xl font-semibold text-forest-900">{newsletterCopy.heading}</h2>
       <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{newsletterCopy.body}</p>
 

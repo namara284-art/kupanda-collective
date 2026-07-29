@@ -13,9 +13,6 @@ export function StoryReel() {
       <Container>
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-xl">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">
-              {storiesReel.eyebrow}
-            </p>
             <h2 id="stories-heading" className="text-balance text-[clamp(1.6rem,1.3rem+1.4vw,2.3rem)] font-semibold text-forest-900">
               {storiesReel.heading}
             </h2>
