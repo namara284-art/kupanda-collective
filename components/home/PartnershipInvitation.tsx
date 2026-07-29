@@ -8,9 +8,6 @@ export function PartnershipInvitation() {
     <section className="bg-clay-100 py-20 sm:py-24" aria-labelledby="partnership-heading">
       <Container className="content-container-wide">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-clay-700">
-            {partnershipSection.eyebrow}
-          </p>
           <h2 id="partnership-heading" className="text-balance font-heading text-[clamp(1.8rem,1.4rem+1.8vw,2.7rem)] font-medium text-forest-900">
             {partnershipSection.heading}
           </h2>

@@ -32,8 +32,6 @@ export const contactInfo = {
 export const socialLinks = [
   { label: "LinkedIn", href: "#", placeholder: true },
   { label: "X (Twitter)", href: "#", placeholder: true },
-  { label: "Facebook", href: "#", placeholder: true },
-  { label: "Instagram", href: "#", placeholder: true },
 ] as const;
 
 export type NavLink = {

@@ -71,7 +71,6 @@ export const storiesReel = {
 };
 
 export const partnershipSection = {
-  eyebrow: "Partnership",
   heading: "What could we grow together?",
   body: "Kupanda works with foundations, government, researchers and refugee-led organisations across the areas below, and welcomes conversations that do not fit neatly into any one of them.",
   cta: { label: "Partner With Us", href: "/partner-with-us" },
