@@ -1,5 +1,4 @@
 export const hero = {
-  label: "Uganda · Refugee and host communities",
   headline: "Growing childcare, livelihoods and stronger communities together.",
   supporting:
     "Kupanda Collective works with refugee and host communities in Uganda to turn local caregiving into skilled work, dependable childcare and viable women-led enterprises.",
@@ -36,7 +35,7 @@ export const threeGenerationReturn = {
 
 export const ecosystem = {
   eyebrow: "How Kupanda grows change",
-  heading: "Five programme areas, one community system",
+  heading: "One community system",
   description:
     "Community leadership sits at the centre. Every programme area grows from it, and feeds back into it.",
   centre: "Community leadership",

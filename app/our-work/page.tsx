@@ -23,13 +23,8 @@ export default function OurWorkPage() {
           <Breadcrumbs items={[{ label: "Our Work" }]} />
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">Our Work</p>
           <h1 className="mt-2 max-w-3xl text-balance text-[clamp(2rem,1.7rem+1.6vw,3.2rem)] font-semibold text-forest-900">
-            One community system, five connected parts
+            One community system
           </h1>
-          <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-charcoal-700">
-            Kupanda Collective does not run five separate programmes. Early childhood development, health,
-            livelihoods, participation and evidence are designed to reinforce one another around the same
-            children, caregivers and communities, including families in humanitarian and displacement contexts.
-          </p>
         </Container>
       </div>
 
@@ -42,7 +37,7 @@ export default function OurWorkPage() {
               reverse={index % 2 === 1}
               title={programme.title}
               body={programme.summary}
-              cta={{ label: "Read the full pillar", href: `/our-work/${programme.slug}` }}
+              cta={{ label: "Explore More", href: `/our-work/${programme.slug}` }}
               image={{
                 alt: `${programme.title} in practice, photograph to be supplied by Kupanda Collective`,
               }}

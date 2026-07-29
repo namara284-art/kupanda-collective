@@ -24,11 +24,6 @@ export default function StoriesAndLearningPage() {
           <h1 className="mt-2 max-w-3xl text-balance text-[clamp(2rem,1.7rem+1.6vw,3.2rem)] font-semibold text-forest-900">
             Community stories, programme updates and evidence
           </h1>
-          <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-charcoal-700">
-            This hub is being built out as Kupanda Collective&rsquo;s programmes generate verified stories, research
-            and policy learning. The pieces below show the kinds of content that will appear here; every one is
-            clearly marked as a placeholder.
-          </p>
         </Container>
       </div>
 

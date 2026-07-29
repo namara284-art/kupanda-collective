@@ -110,7 +110,7 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
       <section className="py-14 sm:py-16" aria-labelledby="interventions-heading">
         <Container>
           <h2 id="interventions-heading" className="text-sm font-semibold uppercase tracking-wide text-forest-600">
-            Illustrative interventions
+            Interventions
           </h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {programme.interventions.map((item) => (

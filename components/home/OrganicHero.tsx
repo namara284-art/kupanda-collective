@@ -27,10 +27,6 @@ export function OrganicHero() {
             />
           </svg>
 
-          <span className="mb-6 inline-flex w-fit items-center rounded-full bg-sage-200 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-forest-800">
-            {hero.label}
-          </span>
-
           <h1 className="text-balance font-heading text-[clamp(2.25rem,1.7rem+2.6vw,3.8rem)] font-semibold leading-[1.05] text-forest-900">
             {hero.headline}
           </h1>
