@@ -38,7 +38,7 @@ export function StoryReel() {
             <motion.article
               whileHover={{ y: -4 }}
               transition={transition.control}
-              className="flex h-full flex-col overflow-hidden rounded-3xl border border-sage-200 bg-white transition-shadow duration-200 hover:shadow-lg lg:flex-row"
+              className="flex h-full flex-col overflow-hidden rounded-3xl border border-sage-200 bg-white transition-[box-shadow,border-color] duration-200 hover:border-coral-300 hover:shadow-lg lg:flex-row"
             >
               <motion.div
                 whileHover={{ scale: 1.04 }}
@@ -50,7 +50,7 @@ export function StoryReel() {
               </motion.div>
               <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-sage-100 px-2.5 py-1 text-xs font-semibold text-forest-800">
+                  <span className="rounded-full bg-coral-100 px-2.5 py-1 text-xs font-semibold text-coral-800">
                     {lead.category}
                   </span>
                   <span className="rounded-full bg-clay-100 px-2.5 py-1 text-xs font-semibold text-clay-600">
@@ -69,7 +69,7 @@ export function StoryReel() {
                 key={story.slug}
                 whileHover={{ y: -3 }}
                 transition={transition.control}
-                className="flex gap-4 rounded-2xl border border-sage-200 bg-white p-4 transition-shadow duration-200 hover:shadow-md"
+                className="flex gap-4 rounded-2xl border border-sage-200 bg-white p-4 transition-[box-shadow,border-color] duration-200 hover:border-coral-300 hover:shadow-md"
               >
                 <div className="flex aspect-square w-16 shrink-0 items-center justify-center rounded-xl bg-sage-100" aria-hidden="true">
                   <ImageIcon className="h-5 w-5 text-forest-400" />

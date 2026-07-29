@@ -25,14 +25,14 @@ export function CategoryFilter({
             onClick={() => onChange(category)}
             className={cn(
               "relative min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-              isActive ? "border-forest-700 text-cream-50" : "border-sage-300 bg-white text-charcoal-700 hover:border-forest-600 hover:text-forest-800"
+              isActive ? "border-ochre-600 text-charcoal-900" : "border-sage-300 bg-white text-charcoal-700 hover:border-forest-600 hover:text-forest-800"
             )}
           >
             {isActive ? (
               <motion.span
                 layoutId="category-filter-active"
                 transition={transition.control}
-                className="absolute inset-0 rounded-full bg-forest-700"
+                className="absolute inset-0 rounded-full bg-ochre-500"
               />
             ) : null}
             <span className="relative">{category}</span>

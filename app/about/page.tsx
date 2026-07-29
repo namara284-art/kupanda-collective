@@ -87,7 +87,7 @@ export default function AboutPage() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" aria-labelledby="assemblies-heading" className="mb-16 border-l-4 border-clay-500 pl-6">
+        <ScrollReveal as="section" aria-labelledby="assemblies-heading" className="mb-16 border-l-4 border-coral-500 pl-6">
           <h2 id="assemblies-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {assemblies.heading}
           </h2>

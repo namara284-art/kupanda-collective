@@ -19,6 +19,13 @@ const icons = {
   "evidence-learning-and-policy": LineChart,
 } as const;
 
+// Caregiver Livelihoods gets the coral accent (caregiver-focused content);
+// every other icon circle keeps the standard sage/forest treatment.
+const iconAccent: Record<string, string> = {
+  "caregiver-livelihoods": "bg-coral-100 text-coral-800",
+};
+const defaultIconAccent = "bg-sage-100 text-forest-700";
+
 // Positions (top%, left%) tracing a five-point ring around a centre node.
 const positions = [
   { top: "6%", left: "50%" },
@@ -56,7 +63,7 @@ export function GrowthEcosystem() {
                 stroke="currentColor"
                 strokeWidth="0.4"
                 strokeLinecap="round"
-                className={activeIndex === i ? "text-leaf-400" : "text-forest-700"}
+                className={activeIndex === i ? "text-ochre-500" : "text-forest-700"}
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 1 }}
                 viewport={viewport}
@@ -95,9 +102,11 @@ export function GrowthEcosystem() {
                     onMouseLeave={() => setActiveIndex(null)}
                     onFocus={() => setActiveIndex(i)}
                     onBlur={() => setActiveIndex(null)}
-                    className="group block rounded-2xl border border-forest-700 bg-forest-800/90 p-4 text-center transition-colors hover:border-leaf-400 hover:bg-forest-800"
+                    className="group block rounded-2xl border border-forest-700 bg-forest-800/90 p-4 text-center transition-colors hover:border-ochre-500 hover:bg-forest-800"
                   >
-                    <span className="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-sage-100 text-forest-700">
+                    <span
+                      className={`mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full ${iconAccent[programme.slug] ?? defaultIconAccent}`}
+                    >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <p className="text-sm font-semibold text-cream-50">{programme.shortTitle}</p>
@@ -125,7 +134,9 @@ export function GrowthEcosystem() {
                 className="p-5"
                 trigger={
                   <>
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sage-100 text-forest-700">
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${iconAccent[programme.slug] ?? defaultIconAccent}`}
+                    >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span className="flex-1 font-semibold text-cream-50">{programme.shortTitle}</span>
@@ -135,7 +146,7 @@ export function GrowthEcosystem() {
                 <p className="mt-3 pl-12 text-sm leading-relaxed text-sage-200">{programme.summary}</p>
                 <Link
                   href={`/our-work/${programme.slug}`}
-                  className="group mt-3 ml-12 inline-flex items-center gap-1.5 text-sm font-semibold text-leaf-400 hover:text-leaf-300"
+                  className="group mt-3 ml-12 inline-flex items-center gap-1.5 text-sm font-semibold text-ochre-500 hover:text-ochre-300"
                 >
                   Read more
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />

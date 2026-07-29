@@ -39,7 +39,7 @@ export function AssembliesSection() {
                   cx="0"
                   cy="0"
                   r="3"
-                  className="fill-leaf-300/70"
+                  className="fill-coral-300/80"
                   initial={{ cx: m.x, cy: m.y, opacity: 0 }}
                   whileInView={{ cx: 0, cy: 0, opacity: [0, 0.9, 0] }}
                   viewport={viewport}

@@ -39,7 +39,7 @@ export function OrganicHero() {
             aria-hidden="true"
             animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
             transition={prefersReducedMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -right-6 top-1/2 hidden h-40 w-auto -translate-y-1/2 text-leaf-500 lg:block"
+            className="absolute -right-6 top-1/2 hidden h-40 w-auto -translate-y-1/2 text-ochre-500 lg:block"
           >
             <GrowthLine
               d="M30 10 C10 40 50 70 20 100 C -10 130 40 150 25 190"
@@ -61,7 +61,7 @@ export function OrganicHero() {
             {hero.supporting}
           </motion.p>
 
-          <motion.p variants={rise} transition={transition.hero} className="mt-4 text-sm font-semibold italic text-clay-600">
+          <motion.p variants={rise} transition={transition.hero} className="mt-4 text-sm font-semibold italic text-ochre-800">
             {hero.tagline}
           </motion.p>
 

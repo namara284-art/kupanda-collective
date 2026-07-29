@@ -356,7 +356,7 @@ function NavUnderline({ active, transparent }: { active: boolean; transparent: b
       className={cn(
         "pointer-events-none absolute inset-x-4 bottom-1 h-[2px] origin-center scale-x-0 rounded-full transition-transform duration-200 ease-out group-hover:scale-x-100",
         active && "scale-x-100",
-        transparent ? "bg-leaf-300" : "bg-forest-700"
+        transparent ? "bg-ochre-300" : "bg-ochre-600"
       )}
     />
   );

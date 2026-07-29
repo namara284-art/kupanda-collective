@@ -51,6 +51,13 @@ const tones = {
   "evidence-learning-and-policy": "bg-clay-100",
 } as const;
 
+// Caregiver Livelihoods gets the coral accent (caregiver-focused content);
+// every other pillar keeps the standard forest icon circle.
+const iconAccent: Record<string, string> = {
+  "caregiver-livelihoods": "bg-coral-500 text-charcoal-900",
+};
+const defaultIconAccent = "bg-forest-700 text-cream-50";
+
 export function generateStaticParams() {
   return programmes.map((p) => ({ slug: p.slug }));
 }
@@ -83,7 +90,9 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
       <div className={`border-b border-sage-200 py-14 sm:py-20 ${tone}`}>
         <Container>
           <Breadcrumbs items={[{ label: "Our Work", href: "/our-work" }, { label: programme.shortTitle }]} />
-          <span className="mt-6 flex h-12 w-12 items-center justify-center rounded-full bg-forest-700 text-cream-50">
+          <span
+            className={`mt-6 flex h-12 w-12 items-center justify-center rounded-full ${iconAccent[slug] ?? defaultIconAccent}`}
+          >
             <Icon className="h-6 w-6" aria-hidden="true" />
           </span>
           <h1 className="mt-4 max-w-3xl text-balance text-[clamp(2rem,1.6rem+1.8vw,3.2rem)] font-semibold text-forest-900">
