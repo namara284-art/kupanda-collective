@@ -3,7 +3,7 @@ import { newsletterSchema } from "@/lib/validation";
 import { notify } from "@/lib/notify";
 import { getClientKey, isRateLimited } from "@/lib/rate-limit";
 
-// Demo-mode newsletter signup. No email marketing platform is connected —
+// Demo-mode newsletter signup. No email marketing platform is connected.
 // see README.md "Configure newsletter sign-up" for how to wire this route
 // to Mailchimp, Buttondown, ConvertKit or similar.
 export async function POST(request: Request) {
