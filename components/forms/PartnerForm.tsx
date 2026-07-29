@@ -80,7 +80,7 @@ export function PartnerForm() {
       <div role="status" className="flex items-start gap-3 rounded-2xl border border-forest-700 bg-sage-100 p-6">
         <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-forest-700" aria-hidden="true" />
         <div>
-          <p className="font-semibold text-forest-900">Thank you — your enquiry has been sent.</p>
+          <p className="font-semibold text-forest-900">Thank you. Your enquiry has been sent.</p>
           <p className="mt-1 text-sm text-charcoal-700">
             This form is running in demonstration mode until Kupanda Collective connects a live inbox. See
             README.md for setup details.
