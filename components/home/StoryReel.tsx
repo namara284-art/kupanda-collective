@@ -16,7 +16,6 @@ export function StoryReel() {
             <h2 id="stories-heading" className="text-balance text-[clamp(1.6rem,1.3rem+1.4vw,2.3rem)] font-semibold text-forest-900">
               {storiesReel.heading}
             </h2>
-            <p className="mt-2 italic text-charcoal-700">{storiesReel.intro}</p>
           </div>
           <Link
             href={storiesReel.cta.href}

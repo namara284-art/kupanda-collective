@@ -62,7 +62,6 @@ export const assemblies = {
 
 export const storiesReel = {
   heading: "Stories from the community",
-  intro: "Community stories coming soon.",
   note: "Editorial note: this section is reserved for verified, consented first-person stories and photographs from caregivers and community members. No testimonial, quote or story should be added here until informed consent has been documented and the content has been reviewed under Kupanda's safeguarding guidance. See /safeguarding.",
   cta: { label: "Visit Stories & Learning", href: "/stories-and-learning" },
 };
