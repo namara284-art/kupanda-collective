@@ -14,7 +14,6 @@ export const meaning = {
 };
 
 export const threeGenerationReturn = {
-  eyebrow: "One investment, three returns",
   heading: "What one investment in childcare grows into",
   returns: [
     {

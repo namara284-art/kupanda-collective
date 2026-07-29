@@ -8,9 +8,6 @@ export function ThreeGenerationReturn() {
     <section className="bg-sage-100 py-20 sm:py-24" aria-labelledby="three-gen-heading">
       <Container>
         <div className="max-w-2xl">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">
-            {threeGenerationReturn.eyebrow}
-          </p>
           <h2 id="three-gen-heading" className="text-balance text-[clamp(1.7rem,1.4rem+1.5vw,2.6rem)] font-semibold text-forest-900">
             {threeGenerationReturn.heading}
           </h2>
