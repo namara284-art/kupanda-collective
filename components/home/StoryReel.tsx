@@ -59,8 +59,6 @@ export function StoryReel() {
             ))}
           </div>
         </div>
-
-        <p className="mt-6 max-w-2xl text-xs text-charcoal-500">{storiesReel.note}</p>
       </Container>
     </section>
   );

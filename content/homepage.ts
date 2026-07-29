@@ -60,9 +60,13 @@ export const assemblies = {
   cta: { label: "See how communities lead this work", href: "/our-work/participation-and-social-cohesion" },
 };
 
+// Editorial note (not displayed on the page): this section is reserved for
+// verified, consented first-person stories and photographs from caregivers
+// and community members. No testimonial, quote or story should be added
+// here until informed consent has been documented and the content has been
+// reviewed under Kupanda's safeguarding guidance. See /safeguarding.
 export const storiesReel = {
   heading: "Stories from the community",
-  note: "Editorial note: this section is reserved for verified, consented first-person stories and photographs from caregivers and community members. No testimonial, quote or story should be added here until informed consent has been documented and the content has been reviewed under Kupanda's safeguarding guidance. See /safeguarding.",
   cta: { label: "Visit Stories & Learning", href: "/stories-and-learning" },
 };
 

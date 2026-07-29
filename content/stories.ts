@@ -35,7 +35,7 @@ export type StoryCard = {
   category: StoryCategory;
   summary: string;
   isPlaceholder: true;
-  statusLabel: "Editorial placeholder" | "Forthcoming";
+  statusLabel: "Editorial placeholder";
 };
 
 export const storyPlaceholders: StoryCard[] = [
@@ -46,7 +46,7 @@ export const storyPlaceholders: StoryCard[] = [
     summary:
       "A forthcoming piece on how strengthening existing caregiver networks changes outcomes for children and families.",
     isPlaceholder: true,
-    statusLabel: "Forthcoming",
+    statusLabel: "Editorial placeholder",
   },
   {
     slug: "listening-through-neighborhood-assemblies",
@@ -64,7 +64,7 @@ export const storyPlaceholders: StoryCard[] = [
     summary:
       "A forthcoming explainer on the link between recognised qualifications, women's income and national ECCE policy.",
     isPlaceholder: true,
-    statusLabel: "Forthcoming",
+    statusLabel: "Editorial placeholder",
   },
   {
     slug: "costing-childcare-in-protracted-displacement",
@@ -73,7 +73,7 @@ export const storyPlaceholders: StoryCard[] = [
     summary:
       "Placeholder for updates from future costing and outcomes research on community-led childcare programming.",
     isPlaceholder: true,
-    statusLabel: "Forthcoming",
+    statusLabel: "Editorial placeholder",
   },
   {
     slug: "building-a-childcare-enterprise-fund",
@@ -81,7 +81,7 @@ export const storyPlaceholders: StoryCard[] = [
     category: "Programme Updates",
     summary: "A forthcoming update on the design and early operation of the Childcare Enterprise Fund.",
     isPlaceholder: true,
-    statusLabel: "Forthcoming",
+    statusLabel: "Editorial placeholder",
   },
   {
     slug: "organisational-profile",

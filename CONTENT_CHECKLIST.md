@@ -42,9 +42,10 @@ needs Kupanda Collective's confirmed information before the site goes live. Sear
 
 ## Community stories
 - [ ] At least one consented, reviewed community story for the "Stories from the community" homepage section
-      (`content/homepage.ts` -> `storiesReel`); currently intentionally left as "Community stories coming soon"
+      (`content/homepage.ts` -> `storiesReel`); the on-page placeholder note has been removed at Kupanda's
+      request, but the same consent/safeguarding requirement is preserved as a code comment above the export
 - [ ] Real entries to replace the placeholder cards in `content/stories.ts` (all currently marked "Editorial
-      placeholder" or "Forthcoming")
+      placeholder")
 
 ## Safeguarding, privacy and legal
 - [ ] Legal review and sign-off of `content/legal.ts` (Privacy Notice, Safeguarding, Terms of Use); all three
