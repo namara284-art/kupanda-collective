@@ -31,8 +31,7 @@ export default function AboutPage() {
       <div className="border-b border-sage-200 bg-cream-100 py-14 sm:py-20">
         <Container>
           <Breadcrumbs items={[{ label: "About Us" }]} />
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">About Us</p>
-          <h1 className="mt-2 max-w-3xl text-balance text-[clamp(2rem,1.7rem+1.6vw,3.2rem)] font-semibold text-forest-900">
+          <h1 className="mt-6 max-w-3xl text-balance text-[clamp(2rem,1.7rem+1.6vw,3.2rem)] font-semibold text-forest-900">
             Growth begins with what communities already have.
           </h1>
         </Container>
