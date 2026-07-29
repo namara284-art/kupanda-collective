@@ -1,64 +1,87 @@
 export const hero = {
-  eyebrow: "Kupanda Collective",
-  headline: "Community-led systems where children, caregivers and communities grow together.",
+  label: "Uganda · Refugee and host communities",
+  headline: "Growing childcare, livelihoods and stronger communities together.",
   supporting:
-    "Kupanda Collective works with refugee and host communities in Uganda to connect quality childcare, caregiver livelihoods, health and community leadership.",
-  primaryCta: { label: "Explore Our Work", href: "/our-work" },
-  secondaryCta: { label: "Partner With Kupanda", href: "/partner-with-us" },
+    "Kupanda Collective works with refugee and host communities in Uganda to turn local caregiving into skilled work, dependable childcare and viable women-led enterprises.",
+  tagline: "Ascending to Self-Reliance",
+  primaryCta: { label: "See How Kupanda Works", href: "/our-work" },
+  secondaryCta: { label: "Partner With Us", href: "/partner-with-us" },
 };
 
-export const positioning = {
-  heading: "Growth begins within communities.",
-  paragraphs: [
-    "Kupanda strengthens the structures communities already trust — childcare centres, schools, cooperatives, faith networks and refugee-led organisations — rather than building isolated services alongside them.",
-    "Childcare, health, livelihoods and participation are treated as connected, not separate: a child thrives when a caregiver has both the skills and the income to provide nurturing care, and a caregiver's voice matters most when she has a real seat in decisions about the services she relies on.",
+export const meaning = {
+  eyebrow: "The name",
+  display: "Kupanda is a Swahili word meaning growth.",
+  paragraph:
+    "Kupanda Collective is building a childcare economy from the hands of women whose care has sustained refugee communities for years. We are a women-led Ugandan organisation working with refugee and host communities to turn local caregiving into skilled work, dependable childcare and viable women-led enterprises. We train caregivers and support them to earn nationally recognised credentials that travel with them wherever life takes them. We help women establish childcare services, connect young children to early learning, nutrition, health and protection, and work with government to register these services within public systems. Through Neighborhood Assemblies and People's Parliaments, families decide what is needed, how resources are used and whether services are working. Kupanda makes every investment work across generations: a child gains a safe place to learn and grow, a woman gains an income and recognised profession, and a community gains childcare infrastructure it can sustain and call its own.",
+};
+
+export const threeGenerationReturn = {
+  eyebrow: "One investment, three returns",
+  heading: "What one investment in childcare grows into",
+  returns: [
+    {
+      label: "A child",
+      description: "gains a safe place to learn and grow.",
+    },
+    {
+      label: "A woman",
+      description: "gains an income and a recognised profession.",
+    },
+    {
+      label: "A community",
+      description: "gains childcare infrastructure it can sustain and call its own.",
+    },
   ],
 };
 
-export const flagshipFeature = {
-  heading: "Building a childcare economy in refugee communities",
-  body: "The Childcare Workforce Initiative connects quality care for young children, recognised skills and income for refugee women, community-owned childcare enterprises, government-recognised services, and the evidence needed for wider adoption.",
-  connections: [
-    "Quality care for young children",
-    "Recognised skills and income for refugee women",
-    "Community-owned childcare enterprises",
-    "Government-recognised services",
-    "Evidence for wider adoption",
-  ],
-  cta: { label: "Explore the Childcare Workforce Initiative", href: "/childcare-workforce-initiative" },
-};
-
-export const impactStats = {
-  heading: "Proposed three-year targets",
-  subheading: "Selected targets from the Childcare Workforce Initiative — not results already achieved.",
-  stats: [
-    { value: "8,000", label: "children aged 0–5 reached with safe, nurturing childcare" },
-    { value: "300", label: "caregivers trained and assessed for recognised credentials" },
-    { value: "120", label: "refugee-led childcare enterprises supported" },
-    { value: "80", label: "childcare services registered with Local Government and EMIS" },
-  ],
-  cta: { label: "See the full results framework", href: "/childcare-workforce-initiative#results" },
+export const ecosystem = {
+  eyebrow: "How Kupanda grows change",
+  heading: "Five programme areas, one community system",
+  description:
+    "Community leadership sits at the centre. Every programme area grows from it, and feeds back into it.",
+  centre: "Community leadership",
+  cta: { label: "Explore Our Work", href: "/our-work" },
 };
 
 export const modelPathway = {
-  heading: "How the model works",
-  steps: ["Community voice", "Skilled caregivers", "Quality childcare", "Stronger livelihoods", "Thriving children and families"],
+  eyebrow: "How the model moves",
+  heading: "From community voice to stronger families",
+  steps: [
+    "Community voice",
+    "Caregiver skills",
+    "Quality childcare",
+    "Women-led enterprise",
+    "Government recognition",
+    "Stronger families",
+  ],
 };
 
-export const communityVoice = {
-  heading: "Community voices",
-  body: "Community stories coming soon.",
-  note:
-    "Editorial note: this section is reserved for verified, consented first-person stories and photographs from caregivers and community members. No testimonial, quote or story should be added here until informed consent has been documented and the content has been reviewed under Kupanda's safeguarding guidance. See /safeguarding.",
+export const assemblies = {
+  eyebrow: "Community governance",
+  heading: "Neighborhood Assemblies and People's Parliaments",
+  body: "Families decide what is needed, how resources are used and whether services are working. Neighborhood Assemblies and People's Parliaments are Kupanda's distinctive model for community-led decision-making, not a consultation exercise added on top of programmes designed elsewhere.",
+  pullQuote:
+    "Through Neighborhood Assemblies and People's Parliaments, families decide what is needed, how resources are used and whether services are working.",
+  cta: { label: "See how communities lead this work", href: "/our-work/participation-and-social-cohesion" },
+};
+
+export const storiesReel = {
+  eyebrow: "Field notes",
+  heading: "Stories from the community",
+  intro: "Community stories coming soon.",
+  note: "Editorial note: this section is reserved for verified, consented first-person stories and photographs from caregivers and community members. No testimonial, quote or story should be added here until informed consent has been documented and the content has been reviewed under Kupanda's safeguarding guidance. See /safeguarding.",
+  cta: { label: "Visit Stories & Learning", href: "/stories-and-learning" },
 };
 
 export const partnershipSection = {
-  heading: "Help build childcare systems that communities can sustain.",
-  body: "Kupanda works with foundations, government, researchers and refugee-led organisations across programme financing, research, caregiver credentialing, enterprise development, health integration, policy implementation and learning.",
+  eyebrow: "Partnership",
+  heading: "What could we grow together?",
+  body: "Kupanda works with foundations, government, researchers and refugee-led organisations across the areas below, and welcomes conversations that do not fit neatly into any one of them.",
   cta: { label: "Partner With Us", href: "/partner-with-us" },
 };
 
 export const newsletter = {
-  heading: "Stay connected to Kupanda's work",
-  body: "Sign up for occasional updates on programmes, publications and partnership opportunities. No spam, and you can unsubscribe at any time.",
+  eyebrow: "Field notes",
+  heading: "Stay close to Kupanda's work",
+  body: "Occasional field notes on programmes, publications and partnership opportunities. No spam, and you can unsubscribe at any time.",
 };
