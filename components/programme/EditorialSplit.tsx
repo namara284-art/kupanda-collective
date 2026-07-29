@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ImagePlaceholder, type ImageSlot } from "@/components/shared/ImagePlaceholder";
+import { AnimatedImage } from "@/components/motion/AnimatedImage";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
 export function EditorialSplit({
   eyebrow,
@@ -29,9 +31,14 @@ export function EditorialSplit({
     >
       <div className="grid lg:grid-cols-2">
         <div className={reverse ? "lg:order-2" : undefined}>
-          <ImagePlaceholder className="rounded-none [&>div]:h-full [&>div]:min-h-[20rem]" aspect="" slot={image} />
+          <AnimatedImage className="[&>div]:h-full [&>div]:min-h-[20rem]">
+            <ImagePlaceholder className="rounded-none [&>div]:h-full [&>div]:min-h-[20rem]" aspect="" slot={image} />
+          </AnimatedImage>
         </div>
-        <div className={`flex flex-col justify-center px-6 py-14 sm:px-12 sm:py-16 lg:px-16 ${reverse ? "lg:order-1" : undefined}`}>
+        <ScrollReveal
+          variant={reverse ? "fade-left" : "fade-right"}
+          className={`flex flex-col justify-center px-6 py-14 sm:px-12 sm:py-16 lg:px-16 ${reverse ? "lg:order-1" : undefined}`}
+        >
           {eyebrow ? (
             <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">{eyebrow}</p>
           ) : null}
@@ -45,13 +52,13 @@ export function EditorialSplit({
           {cta ? (
             <Link
               href={cta.href}
-              className="mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-forest-700 hover:text-forest-900"
+              className="group mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-forest-700 hover:text-forest-900"
             >
               {cta.label}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           ) : null}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

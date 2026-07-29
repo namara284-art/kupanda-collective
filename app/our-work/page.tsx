@@ -90,10 +90,10 @@ export default function OurWorkPage() {
           </p>
           <Link
             href="/our-work/participation-and-social-cohesion"
-            className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-forest-700 px-6 py-3 text-sm font-semibold text-cream-50 transition-colors hover:bg-forest-800"
+            className="group mt-6 inline-flex items-center gap-1.5 rounded-full bg-forest-700 px-6 py-3 text-sm font-semibold text-cream-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-800 hover:shadow-md"
           >
             Participation and Social Cohesion
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </Container>
       </section>
