@@ -1,5 +1,9 @@
+"use client";
+
 import { FileText } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { transition } from "@/lib/motion";
 
 export function DownloadCard({
   title,
@@ -16,7 +20,11 @@ export function DownloadCard({
     status === "available" ? "Download" : status === "on-request" ? "Available on request" : "Coming soon";
 
   return (
-    <div className="flex items-start gap-4 rounded-2xl border border-sage-200 bg-white p-6">
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={transition.control}
+      className="flex items-start gap-4 rounded-2xl border border-sage-200 bg-white p-6 transition-shadow duration-200 hover:shadow-md"
+    >
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sage-100 text-forest-700">
         <FileText className="h-5 w-5" aria-hidden="true" />
       </span>
@@ -26,14 +34,14 @@ export function DownloadCard({
         {status === "available" && href ? (
           <Link
             href={href}
-            className="mt-3 inline-flex text-sm font-semibold text-forest-700 hover:text-forest-900 hover:underline"
+            className="mt-3 inline-flex text-sm font-semibold text-forest-700 hover:text-forest-900 link-grow"
           >
             {statusLabel}
           </Link>
         ) : status === "on-request" && href ? (
           <Link
             href={href}
-            className="mt-3 inline-flex text-sm font-semibold text-forest-700 hover:text-forest-900 hover:underline"
+            className="mt-3 inline-flex text-sm font-semibold text-forest-700 hover:text-forest-900 link-grow"
           >
             Request this document
           </Link>
@@ -43,6 +51,6 @@ export function DownloadCard({
           </span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

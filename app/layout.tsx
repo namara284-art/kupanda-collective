@@ -5,6 +5,9 @@ import { Header } from "@/components/layout/Header";
 import { LayeredFooter } from "@/components/layout/LayeredFooter";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { siteConfig } from "@/content/site-settings";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { RouteProgress } from "@/components/motion/RouteProgress";
+import { PageTransition } from "@/components/motion/PageTransition";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -60,12 +63,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <SkipLink />
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <LayeredFooter />
+        <MotionProvider>
+          <SkipLink />
+          <RouteProgress />
+          <Header />
+          <main id="main-content" className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <LayeredFooter />
+        </MotionProvider>
       </body>
     </html>
   );

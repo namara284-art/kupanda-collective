@@ -5,6 +5,10 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { CommunityQuote } from "@/components/shared/CommunityQuote";
 import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
 import { buildMetadata } from "@/lib/metadata";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { AnimatedImage } from "@/components/motion/AnimatedImage";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 import {
   meaning,
   story,
@@ -39,14 +43,14 @@ export default function AboutPage() {
 
       {/* A single vertical narrative rather than a set of uniform cards. */}
       <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
-        <section aria-labelledby="meaning-heading" className="mb-16">
+        <ScrollReveal as="section" aria-labelledby="meaning-heading" className="mb-16">
           <h2 id="meaning-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {meaning.heading}
           </h2>
           <p className="mt-4 text-[1.08rem] leading-relaxed text-charcoal-700">{meaning.body}</p>
-        </section>
+        </ScrollReveal>
 
-        <section aria-labelledby="story-heading" className="mb-16">
+        <ScrollReveal as="section" aria-labelledby="story-heading" className="mb-16">
           <h2 id="story-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {story.heading}
           </h2>
@@ -57,18 +61,20 @@ export default function AboutPage() {
               </p>
             ))}
           </div>
-        </section>
+        </ScrollReveal>
 
-        <ImagePlaceholder
-          className="mb-16"
-          aspect="aspect-[16/9]"
-          slot={{
-            src: "/images/community/children-playing.jpg",
-            alt: "Children playing together in a Kupanda Collective community, near a traditional thatched-roof structure",
-          }}
-        />
+        <AnimatedImage className="mb-16 aspect-[16/9] rounded-2xl">
+          <ImagePlaceholder
+            className="[&>div]:h-full"
+            aspect=""
+            slot={{
+              src: "/images/community/children-playing.jpg",
+              alt: "Children playing together in a Kupanda Collective community, near a traditional thatched-roof structure",
+            }}
+          />
+        </AnimatedImage>
 
-        <section aria-labelledby="problem-heading" className="mb-16">
+        <ScrollReveal as="section" aria-labelledby="problem-heading" className="mb-16">
           <h2 id="problem-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {whyCommunityLed.heading}
           </h2>
@@ -79,9 +85,9 @@ export default function AboutPage() {
               </p>
             ))}
           </div>
-        </section>
+        </ScrollReveal>
 
-        <section aria-labelledby="assemblies-heading" className="mb-16 border-l-4 border-clay-500 pl-6">
+        <ScrollReveal as="section" aria-labelledby="assemblies-heading" className="mb-16 border-l-4 border-coral-500 pl-6">
           <h2 id="assemblies-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {assemblies.heading}
           </h2>
@@ -92,14 +98,14 @@ export default function AboutPage() {
               </p>
             ))}
           </div>
-        </section>
+        </ScrollReveal>
 
-        <section aria-labelledby="women-led-heading" className="mb-16">
+        <ScrollReveal as="section" aria-labelledby="women-led-heading" className="mb-16">
           <h2 id="women-led-heading" className="font-heading text-2xl font-semibold text-forest-900">
             {womenLed.heading}
           </h2>
           <p className="mt-4 text-[1.05rem] leading-relaxed text-charcoal-700">{womenLed.body}</p>
-        </section>
+        </ScrollReveal>
       </article>
 
       <section className="bg-forest-900 py-16 text-cream-50 sm:py-20" aria-labelledby="vision-mission-heading">
@@ -107,28 +113,32 @@ export default function AboutPage() {
           <h2 id="vision-mission-heading" className="sr-only">
             Vision and mission
           </h2>
-          <div className="space-y-10">
-            <div>
+          <StaggerGroup className="space-y-10">
+            <StaggerItem>
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-leaf-400">{vision.heading}</p>
               <p className="mt-3 font-heading text-xl font-medium leading-snug text-cream-50">{vision.body}</p>
-            </div>
-            <div>
+            </StaggerItem>
+            <StaggerItem>
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-leaf-400">{mission.heading}</p>
               <p className="mt-3 font-heading text-xl font-medium leading-snug text-cream-50">{mission.body}</p>
-            </div>
-          </div>
-          <CommunityQuote tone="dark" quote={guidingBelief.body} className="mt-10" />
+            </StaggerItem>
+          </StaggerGroup>
+          <ScrollReveal delay={0.15}>
+            <CommunityQuote tone="dark" quote={guidingBelief.body} className="mt-10" />
+          </ScrollReveal>
         </Container>
       </section>
 
       <section className="py-16 sm:py-20" aria-labelledby="how-we-work-heading">
         <Container className="max-w-3xl">
-          <h2 id="how-we-work-heading" className="font-heading text-2xl font-semibold text-forest-900">
-            {howWeWork.heading}
-          </h2>
-          <ol className="mt-8 space-y-8 border-l-2 border-dashed border-leaf-600 pl-6">
+          <ScrollReveal>
+            <h2 id="how-we-work-heading" className="font-heading text-2xl font-semibold text-forest-900">
+              {howWeWork.heading}
+            </h2>
+          </ScrollReveal>
+          <StaggerGroup as="ol" interval="tight" className="mt-8 space-y-8 border-l-2 border-dashed border-leaf-600 pl-6">
             {howWeWork.steps.map((step, i) => (
-              <li key={step.title} className="relative">
+              <StaggerItem key={step.title} as="li" className="relative">
                 <span
                   aria-hidden="true"
                   className="absolute -left-[2.05rem] top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-forest-700 text-xs font-semibold text-cream-50"
@@ -137,37 +147,39 @@ export default function AboutPage() {
                 </span>
                 <h3 className="font-semibold text-forest-900">{step.title}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-charcoal-700">{step.description}</p>
-              </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerGroup>
         </Container>
       </section>
 
       <section className="bg-sage-100 py-16 sm:py-20" aria-labelledby="values-heading">
         <Container className="max-w-3xl">
-          <h2 id="values-heading" className="font-heading text-2xl font-semibold text-forest-900">
-            Our values
-          </h2>
-          <dl className="mt-8 space-y-5">
+          <ScrollReveal>
+            <h2 id="values-heading" className="font-heading text-2xl font-semibold text-forest-900">
+              Our values
+            </h2>
+          </ScrollReveal>
+          <StaggerGroup as="dl" interval="tight" className="mt-8 space-y-5">
             {values.map((value) => (
-              <div key={value.title} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
+              <StaggerItem key={value.title} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
                 <dt className="shrink-0 font-heading text-lg font-medium text-forest-800 sm:w-56">{value.title}</dt>
                 <dd className="text-charcoal-700">{value.description}</dd>
-              </div>
+              </StaggerItem>
             ))}
-          </dl>
+          </StaggerGroup>
         </Container>
       </section>
 
       <section className="py-16 sm:py-20" aria-labelledby="governance-heading">
         <Container className="max-w-3xl">
-          <div className="radius-organic-1 border border-dashed border-sage-300 bg-white p-8 text-center">
+          <ScrollReveal variant="scale" className="radius-organic-1 border border-dashed border-sage-300 bg-white p-8 text-center">
             <Users2 className="mx-auto h-8 w-8 text-forest-600" aria-hidden="true" />
             <h2 id="governance-heading" className="mt-4 text-xl font-semibold text-forest-900">
               {governance.heading}
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-charcoal-700">{governance.body}</p>
-          </div>
+          </ScrollReveal>
         </Container>
       </section>
     </>
