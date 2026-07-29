@@ -31,16 +31,14 @@ needs Kupanda Collective's confirmed information before the site goes live. Sear
 ## Photography
 - [x] Three photographs supplied and placed: `public/images/community/gathering-dance.jpg` (homepage hero),
       `assembly-wide.jpg` (homepage Neighborhood Assemblies section), and `assembly-close.jpg` (Participation
-      and Social Cohesion programme page). **Action needed:** `assembly-wide.jpg` and `assembly-close.jpg` show
-      identifiable children, including an infant and a toddler. Per Kupanda's own Safeguarding page, please
-      confirm guardian consent has been documented for these images before the site is treated as fully public.
+      and Social Cohesion programme page).
+- [x] `assembly-wide.jpg` and `assembly-close.jpg` show identifiable children, including an infant and a
+      toddler. Confirmed by Kupanda (2026-07-29): guardian consent is in place for these images.
 - [ ] Verified, rights-cleared photographs still needed for: meaning section, three-generation return, and the
       remaining 4 programme pillar pages under `/our-work/[slug]`. Every remaining image slot is a placeholder
       (`components/shared/ImagePlaceholder.tsx`) with the required alt text already drafted; see §5c of
       README.md for how to swap them in.
 - [ ] Photo credits/attribution for the three supplied photographs (none is currently recorded in the codebase)
-- [ ] Confirmation that consent was obtained for any identifiable individual, especially children (see
-      `/safeguarding`)
 
 ## Community stories
 - [ ] At least one consented, reviewed community story for the "Stories from the community" homepage section
