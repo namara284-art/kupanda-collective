@@ -18,7 +18,6 @@ import {
   values,
   governance,
 } from "@/content/about";
-import { siteConfig } from "@/content/site-settings";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -36,7 +35,6 @@ export default function AboutPage() {
           <h1 className="mt-2 max-w-3xl text-balance text-[clamp(2rem,1.7rem+1.6vw,3.2rem)] font-semibold text-forest-900">
             Growth begins with what communities already have.
           </h1>
-          <p className="mt-3 max-w-2xl text-sm italic text-charcoal-500">{siteConfig.tagline}</p>
         </Container>
       </div>
 
