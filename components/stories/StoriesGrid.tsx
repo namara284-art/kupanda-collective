@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { storyCategories, storyPlaceholders } from "@/content/stories";
 import { CategoryFilter } from "./CategoryFilter";
 import { ArticleCard } from "./ArticleCard";
@@ -28,16 +29,18 @@ export function StoriesGrid() {
         {filtered.length === 0 ? (
           <EmptyState title="No entries in this category yet" body="Check back soon, or browse another category above." />
         ) : (
-          <div className="space-y-6">
-            <ArticleCard story={featured} featured />
-            <div className="grid gap-5 sm:grid-cols-6">
-              {rest.map((story, i) => (
-                <div key={story.slug} className={cn("col-span-1", spanRhythm[i % spanRhythm.length])}>
-                  <ArticleCard story={story} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <AnimatePresence mode="popLayout">
+            <motion.div key={active} className="space-y-6">
+              <ArticleCard story={featured} featured />
+              <div className="grid gap-5 sm:grid-cols-6">
+                {rest.map((story, i) => (
+                  <div key={story.slug} className={cn("col-span-1", spanRhythm[i % spanRhythm.length])}>
+                    <ArticleCard story={story} />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
     </div>

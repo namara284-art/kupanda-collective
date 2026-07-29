@@ -2,34 +2,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig, contactInfo, socialLinks, footerLinks } from "@/content/site-settings";
 import { NewsletterSignup } from "@/components/home/NewsletterSignup";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { StaggerItem } from "@/components/motion/StaggerItem";
+import { GrowthLine } from "@/components/motion/GrowthLine";
 
 export function LayeredFooter() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="relative overflow-hidden bg-forest-900 text-cream-50">
-      <svg
-        aria-hidden="true"
+      <GrowthLine
+        d="M100 10 C40 10 10 60 10 100 C10 150 50 190 100 190 C150 190 190 150 190 100"
         viewBox="0 0 200 200"
         className="pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 text-forest-800/60"
-        fill="none"
-      >
-        <path
-          d="M100 10 C40 10 10 60 10 100 C10 150 50 190 100 190 C150 190 190 150 190 100"
-          stroke="currentColor"
-          strokeWidth="18"
-        />
-      </svg>
+        strokeWidth={18}
+        durationSeconds={1.4}
+      />
 
       {/* Layered top panel: a light field-note card floats over the dark footer field. */}
       <div className="content-container-wide relative pt-14 sm:pt-16">
-        <div className="mx-auto max-w-xl shadow-2xl shadow-forest-950/40">
+        <ScrollReveal variant="scale" className="mx-auto max-w-xl shadow-2xl shadow-forest-950/40">
           <NewsletterSignup />
-        </div>
+        </ScrollReveal>
       </div>
 
-      <div className="content-container relative grid gap-10 pb-14 pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-        <div className="sm:col-span-2 lg:col-span-1">
+      <StaggerGroup
+        as="div"
+        interval="normal"
+        className="content-container relative grid gap-10 pb-14 pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+      >
+        <StaggerItem className="sm:col-span-2 lg:col-span-1">
           <Image
             src="/images/logo/kupanda-logo-white.png"
             alt={`${siteConfig.name} logo`}
@@ -41,35 +44,37 @@ export function LayeredFooter() {
             A Uganda-based, women-led organisation strengthening community-led systems that connect childcare,
             caregiver livelihoods, health and social cohesion for refugee and host communities.
           </p>
-        </div>
+        </StaggerItem>
 
         {footerLinks.map((group) => (
-          <nav key={group.title} aria-label={group.title}>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-leaf-400">{group.title}</h2>
-            <ul className="mt-4 space-y-2.5">
-              {group.links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-sage-200 hover:text-cream-50 hover:underline">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <StaggerItem key={group.title} as="div">
+            <nav aria-label={group.title}>
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-leaf-400">{group.title}</h2>
+              <ul className="mt-4 space-y-2.5">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-sage-200 hover:text-cream-50 link-grow">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </StaggerItem>
         ))}
 
-        <div>
+        <StaggerItem>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-leaf-400">Contact</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-sage-200">
             <li>{contactInfo.location.city}</li>
             <li>
-              <a href={`mailto:${contactInfo.email.general}`} className="hover:text-cream-50 hover:underline">
+              <a href={`mailto:${contactInfo.email.general}`} className="hover:text-cream-50 link-grow">
                 {contactInfo.email.general}
               </a>{" "}
               <span className="text-sage-300/70">(placeholder)</span>
             </li>
             <li>
-              <Link href="/safeguarding" className="hover:text-cream-50 hover:underline">
+              <Link href="/safeguarding" className="hover:text-cream-50 link-grow">
                 Report a safeguarding concern
               </Link>
             </li>
@@ -81,7 +86,7 @@ export function LayeredFooter() {
               <li key={social.label}>
                 <a
                   href={social.href}
-                  className="text-sm text-sage-200 hover:text-cream-50 hover:underline"
+                  className="text-sm text-sage-200 hover:text-cream-50 link-grow"
                   aria-label={`${social.label}${social.placeholder ? " (link coming soon)" : ""}`}
                 >
                   {social.label}
@@ -89,8 +94,8 @@ export function LayeredFooter() {
               </li>
             ))}
           </ul>
-        </div>
-      </div>
+        </StaggerItem>
+      </StaggerGroup>
 
       <div className="relative border-t border-forest-700">
         <div className="content-container flex flex-col gap-2 py-6 text-xs text-sage-300 sm:flex-row sm:items-center sm:justify-between">

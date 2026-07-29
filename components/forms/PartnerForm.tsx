@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { AlertCircle, Sprout } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { partnerSchema } from "@/lib/validation";
 import { partnershipInterestOptions } from "@/content/partnership";
 import { TextField, TextAreaField, SelectField, CheckboxField, HoneypotField } from "./FormField";
+import { transition } from "@/lib/motion";
 
 type FormState = {
   name: string;
@@ -77,8 +79,21 @@ export function PartnerForm() {
 
   if (status === "success") {
     return (
-      <div role="status" className="flex items-start gap-3 rounded-2xl border border-forest-700 bg-sage-100 p-6">
-        <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-forest-700" aria-hidden="true" />
+      <motion.div
+        role="status"
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition.reveal}
+        className="flex items-start gap-3 rounded-2xl border border-forest-700 bg-sage-100 p-6"
+      >
+        <motion.span
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ ...transition.control, delay: 0.1 }}
+          className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-700 text-cream-50"
+        >
+          <Sprout className="h-4 w-4" aria-hidden="true" />
+        </motion.span>
         <div>
           <p className="font-semibold text-forest-900">Thank you. Your enquiry has been sent.</p>
           <p className="mt-1 text-sm text-charcoal-700">
@@ -86,7 +101,7 @@ export function PartnerForm() {
             README.md for setup details.
           </p>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -166,18 +181,35 @@ export function PartnerForm() {
         label="I consent to Kupanda Collective contacting me about this enquiry using the details provided. See our Privacy Notice."
       />
 
-      {status === "error" && serverMessage ? (
-        <p role="alert" className="flex items-start gap-2 rounded-lg bg-clay-100 p-3 text-sm text-clay-600">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          {serverMessage}
-        </p>
-      ) : null}
+      <AnimatePresence initial={false}>
+        {status === "error" && serverMessage ? (
+          <motion.p
+            role="alert"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={transition.control}
+            className="flex items-start gap-2 overflow-hidden rounded-lg bg-clay-100 p-3 text-sm text-clay-600"
+          >
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            {serverMessage}
+          </motion.p>
+        ) : null}
+      </AnimatePresence>
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex min-h-11 items-center justify-center rounded-full bg-forest-700 px-6 py-3 text-sm font-semibold text-cream-50 transition-colors hover:bg-forest-800 disabled:opacity-60"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-forest-700 px-6 py-3 text-sm font-semibold text-cream-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-800 hover:shadow-md disabled:pointer-events-none disabled:opacity-60 disabled:hover:translate-y-0"
       >
+        {status === "submitting" ? (
+          <motion.span
+            aria-hidden="true"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+            className="h-3.5 w-3.5 rounded-full border-2 border-cream-50/40 border-t-cream-50"
+          />
+        ) : null}
         {status === "submitting" ? "Sending…" : "Send enquiry"}
       </button>
     </form>

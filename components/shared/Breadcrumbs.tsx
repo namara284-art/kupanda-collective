@@ -26,7 +26,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ol className="flex flex-wrap items-center gap-1.5 text-charcoal-500">
         <li className="flex items-center gap-1.5">
-          <Link href="/" className="hover:text-forest-800 hover:underline">
+          <Link href="/" className="hover:text-forest-800 link-grow">
             Home
           </Link>
           <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -35,7 +35,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           <li key={item.label} className="flex items-center gap-1.5">
             {item.href && i < items.length - 1 ? (
               <>
-                <Link href={item.href} className="hover:text-forest-800 hover:underline">
+                <Link href={item.href} className="hover:text-forest-800 link-grow">
                   {item.label}
                 </Link>
                 <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />

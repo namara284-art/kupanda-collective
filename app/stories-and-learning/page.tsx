@@ -5,6 +5,9 @@ import { StoriesGrid } from "@/components/stories/StoriesGrid";
 import { DownloadCard } from "@/components/shared/DownloadCard";
 import { storyPlaceholders } from "@/content/stories";
 import { buildMetadata } from "@/lib/metadata";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 
 export const metadata: Metadata = buildMetadata({
   title: "Stories & Learning",
@@ -36,19 +39,18 @@ export default function StoriesAndLearningPage() {
       {resources.length > 0 ? (
         <section className="bg-sage-100 py-14 sm:py-16" aria-labelledby="resources-heading">
           <Container>
-            <h2 id="resources-heading" className="text-sm font-semibold uppercase tracking-wide text-forest-800">
-              Resources
-            </h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <ScrollReveal>
+              <h2 id="resources-heading" className="text-sm font-semibold uppercase tracking-wide text-forest-800">
+                Resources
+              </h2>
+            </ScrollReveal>
+            <StaggerGroup className="mt-6 grid gap-4 sm:grid-cols-2">
               {resources.map((resource) => (
-                <DownloadCard
-                  key={resource.slug}
-                  title={resource.title}
-                  description={resource.summary}
-                  status="coming-soon"
-                />
+                <StaggerItem key={resource.slug}>
+                  <DownloadCard title={resource.title} description={resource.summary} status="coming-soon" />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </Container>
         </section>
       ) : null}

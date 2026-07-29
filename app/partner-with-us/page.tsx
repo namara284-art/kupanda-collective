@@ -5,6 +5,9 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PartnerForm } from "@/components/forms/PartnerForm";
 import { partnershipPathways, partnerPageIntro, whyPartner, whatKupandaBrings } from "@/content/partnership";
 import { buildMetadata } from "@/lib/metadata";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 
 export const metadata: Metadata = buildMetadata({
   title: "Partner With Us",
@@ -28,29 +31,33 @@ export default function PartnerWithUsPage() {
 
       <section className="py-14 sm:py-16" aria-labelledby="why-heading">
         <Container className="max-w-3xl">
-          <h2 id="why-heading" className="font-heading text-2xl font-semibold text-forest-900">
-            {whyPartner.heading}
-          </h2>
-          <ul className="mt-6 space-y-4">
+          <ScrollReveal>
+            <h2 id="why-heading" className="font-heading text-2xl font-semibold text-forest-900">
+              {whyPartner.heading}
+            </h2>
+          </ScrollReveal>
+          <StaggerGroup as="ul" interval="tight" className="mt-6 space-y-4">
             {whyPartner.reasons.map((reason) => (
-              <li key={reason} className="flex gap-3">
+              <StaggerItem key={reason} as="li" className="flex gap-3">
                 <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <span className="text-[1.02rem] leading-relaxed text-charcoal-700">{reason}</span>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </StaggerGroup>
         </Container>
       </section>
 
       {/* Partnership pathways as a flowing, divided list, not a repeated card grid. */}
       <section className="bg-sage-100 py-14 sm:py-16" aria-labelledby="pathways-heading">
         <Container className="max-w-3xl">
-          <h2 id="pathways-heading" className="font-heading text-2xl font-semibold text-forest-900">
-            Ways to work together
-          </h2>
-          <div className="mt-6 divide-y divide-sage-300 rounded-2xl border border-sage-300 bg-white">
+          <ScrollReveal>
+            <h2 id="pathways-heading" className="font-heading text-2xl font-semibold text-forest-900">
+              Ways to work together
+            </h2>
+          </ScrollReveal>
+          <StaggerGroup interval="tight" className="mt-6 divide-y divide-sage-300 rounded-2xl border border-sage-300 bg-white">
             {partnershipPathways.map((pathway) => (
-              <div key={pathway.title} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-start sm:gap-8 sm:p-6">
+              <StaggerItem key={pathway.title} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-start sm:gap-8 sm:p-6">
                 <h3 className="shrink-0 font-heading text-lg font-medium text-forest-800 sm:w-64">{pathway.title}</h3>
                 <div>
                   <p className="text-sm leading-relaxed text-charcoal-700">{pathway.description}</p>
@@ -62,29 +69,33 @@ export default function PartnerWithUsPage() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
       <section className="py-14 sm:py-16" aria-labelledby="brings-heading">
         <Container className="max-w-3xl">
-          <h2 id="brings-heading" className="font-heading text-2xl font-semibold text-forest-900">
-            {whatKupandaBrings.heading}
-          </h2>
-          <p className="mt-4 text-[1.02rem] leading-relaxed text-charcoal-700">{whatKupandaBrings.body}</p>
+          <ScrollReveal>
+            <h2 id="brings-heading" className="font-heading text-2xl font-semibold text-forest-900">
+              {whatKupandaBrings.heading}
+            </h2>
+            <p className="mt-4 text-[1.02rem] leading-relaxed text-charcoal-700">{whatKupandaBrings.body}</p>
+          </ScrollReveal>
         </Container>
       </section>
 
       <section className="bg-clay-100 py-14 sm:py-16" aria-labelledby="enquiry-heading">
         <Container className="max-w-2xl">
-          <h2 id="enquiry-heading" className="text-center font-heading text-2xl font-semibold text-forest-900">
-            Send a partnership enquiry
-          </h2>
-          <div className="mt-8 rounded-3xl border border-sage-200 bg-white p-6 sm:p-8">
-            <PartnerForm />
-          </div>
+          <ScrollReveal variant="scale">
+            <h2 id="enquiry-heading" className="text-center font-heading text-2xl font-semibold text-forest-900">
+              Send a partnership enquiry
+            </h2>
+            <div className="mt-8 rounded-3xl border border-sage-200 bg-white p-6 sm:p-8">
+              <PartnerForm />
+            </div>
+          </ScrollReveal>
         </Container>
       </section>
     </>

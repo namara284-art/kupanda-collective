@@ -1,4 +1,8 @@
+"use client";
+
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/cn";
+import { transition } from "@/lib/motion";
 
 type SharedProps = {
   id: string;
@@ -9,7 +13,29 @@ type SharedProps = {
 };
 
 const fieldClasses =
-  "w-full rounded-lg border border-sage-300 bg-white px-4 py-2.5 text-[0.95rem] text-charcoal-900 placeholder:text-charcoal-500/60 focus-visible:border-forest-600";
+  "w-full rounded-lg border border-sage-300 bg-white px-4 py-2.5 text-[0.95rem] text-charcoal-900 transition-[border-color,box-shadow] duration-200 placeholder:text-charcoal-500/60 focus-visible:border-forest-600 focus-visible:shadow-[0_0_0_3px_rgba(43,114,70,0.15)]";
+
+/** Smoothly reveals a field's inline error rather than snapping it into layout. */
+function FieldError({ id, error }: { id: string; error?: string }) {
+  return (
+    <AnimatePresence initial={false}>
+      {error ? (
+        <motion.p
+          key={error}
+          id={`${id}-error`}
+          role="alert"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={transition.control}
+          className="mt-1.5 overflow-hidden text-sm text-clay-600"
+        >
+          {error}
+        </motion.p>
+      ) : null}
+    </AnimatePresence>
+  );
+}
 
 export function TextField({
   id,
@@ -39,11 +65,7 @@ export function TextField({
         className={cn(fieldClasses, error && "border-clay-600")}
         {...rest}
       />
-      {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm text-clay-600">
-          {error}
-        </p>
-      ) : null}
+      <FieldError id={id} error={error} />
     </div>
   );
 }
@@ -75,11 +97,7 @@ export function TextAreaField({
         className={cn(fieldClasses, "resize-y", error && "border-clay-600")}
         {...rest}
       />
-      {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm text-clay-600">
-          {error}
-        </p>
-      ) : null}
+      <FieldError id={id} error={error} />
     </div>
   );
 }
@@ -113,11 +131,7 @@ export function SelectField({
       >
         {children}
       </select>
-      {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm text-clay-600">
-          {error}
-        </p>
-      ) : null}
+      <FieldError id={id} error={error} />
     </div>
   );
 }
@@ -143,11 +157,7 @@ export function CheckboxField({
           {label}
         </label>
       </div>
-      {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm text-clay-600">
-          {error}
-        </p>
-      ) : null}
+      <FieldError id={id} error={error} />
     </div>
   );
 }

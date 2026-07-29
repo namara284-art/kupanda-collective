@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { Sprout } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { newsletterSchema } from "@/lib/validation";
 import { newsletter as newsletterCopy } from "@/content/homepage";
 import { HoneypotField } from "@/components/forms/FormField";
+import { transition } from "@/lib/motion";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -51,10 +53,23 @@ export function NewsletterSignup() {
       <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{newsletterCopy.body}</p>
 
       {status === "success" ? (
-        <p role="status" className="mt-5 flex items-center gap-2 text-sm font-semibold text-forest-700">
-          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+        <motion.p
+          role="status"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={transition.reveal}
+          className="mt-5 flex items-center gap-2 text-sm font-semibold text-forest-700"
+        >
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ ...transition.control, delay: 0.1 }}
+            className="flex h-6 w-6 items-center justify-center rounded-full bg-forest-700 text-cream-50"
+          >
+            <Sprout className="h-3.5 w-3.5" aria-hidden="true" />
+          </motion.span>
           Thank you, you&rsquo;re on the list. (Demonstration mode: no live email platform is connected yet.)
-        </p>
+        </motion.p>
       ) : (
         <form noValidate onSubmit={handleSubmit} className="mt-5">
           <HoneypotField />
@@ -71,13 +86,21 @@ export function NewsletterSignup() {
               onChange={(e) => setEmail(e.target.value)}
               aria-invalid={Boolean(error)}
               aria-describedby={error ? "newsletter-error" : undefined}
-              className="min-h-11 flex-1 rounded-full border border-sage-300 bg-white px-5 py-2.5 text-charcoal-900 placeholder:text-charcoal-500/60 focus-visible:border-forest-600"
+              className="min-h-11 flex-1 rounded-full border border-sage-300 bg-white px-5 py-2.5 text-charcoal-900 transition-[border-color,box-shadow] duration-200 placeholder:text-charcoal-500/60 focus-visible:border-forest-600 focus-visible:shadow-[0_0_0_3px_rgba(43,114,70,0.15)]"
             />
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="min-h-11 rounded-full bg-forest-700 px-6 py-2.5 text-sm font-semibold text-cream-50 transition-colors hover:bg-forest-800 disabled:opacity-60"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-forest-700 px-6 py-2.5 text-sm font-semibold text-cream-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-800 hover:shadow-md disabled:pointer-events-none disabled:opacity-60 disabled:hover:translate-y-0"
             >
+              {status === "submitting" ? (
+                <motion.span
+                  aria-hidden="true"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  className="h-3.5 w-3.5 rounded-full border-2 border-cream-50/40 border-t-cream-50"
+                />
+              ) : null}
               {status === "submitting" ? "Signing up…" : "Sign up"}
             </button>
           </div>
@@ -90,11 +113,21 @@ export function NewsletterSignup() {
             />
             I consent to receive occasional email updates from Kupanda Collective. Unsubscribe anytime.
           </label>
-          {error ? (
-            <p id="newsletter-error" role="alert" className="mt-2 text-sm text-clay-600">
-              {error}
-            </p>
-          ) : null}
+          <AnimatePresence initial={false}>
+            {error ? (
+              <motion.p
+                id="newsletter-error"
+                role="alert"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={transition.control}
+                className="mt-2 overflow-hidden text-sm text-clay-600"
+              >
+                {error}
+              </motion.p>
+            ) : null}
+          </AnimatePresence>
         </form>
       )}
     </div>

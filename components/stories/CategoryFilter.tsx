@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
+import { transition } from "@/lib/motion";
 
 export function CategoryFilter({
   categories,
@@ -22,13 +24,18 @@ export function CategoryFilter({
             aria-pressed={isActive}
             onClick={() => onChange(category)}
             className={cn(
-              "min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-              isActive
-                ? "border-forest-700 bg-forest-700 text-cream-50"
-                : "border-sage-300 bg-white text-charcoal-700 hover:border-forest-600 hover:text-forest-800"
+              "relative min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+              isActive ? "border-forest-700 text-cream-50" : "border-sage-300 bg-white text-charcoal-700 hover:border-forest-600 hover:text-forest-800"
             )}
           >
-            {category}
+            {isActive ? (
+              <motion.span
+                layoutId="category-filter-active"
+                transition={transition.control}
+                className="absolute inset-0 rounded-full bg-forest-700"
+              />
+            ) : null}
+            <span className="relative">{category}</span>
           </button>
         );
       })}

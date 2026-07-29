@@ -6,6 +6,9 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { contactInfo, socialLinks } from "@/content/site-settings";
 import { buildMetadata } from "@/lib/metadata";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
@@ -29,77 +32,79 @@ export default function ContactPage() {
       <section className="py-14 sm:py-16">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <div>
-            <h2 className="font-heading text-2xl font-semibold text-forest-900">Contact details</h2>
-            <ul className="mt-6 space-y-5">
-              <li className="flex items-start gap-3">
+            <ScrollReveal variant="fade-left">
+              <h2 className="font-heading text-2xl font-semibold text-forest-900">Contact details</h2>
+            </ScrollReveal>
+            <StaggerGroup as="ul" interval="tight" className="mt-6 space-y-5">
+              <StaggerItem as="li" className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Location</p>
                   <p className="text-sm text-charcoal-700">{contactInfo.location.city}</p>
                   <p className="text-sm text-charcoal-500">{contactInfo.location.note}</p>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
+              </StaggerItem>
+              <StaggerItem as="li" className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Email</p>
-                  <a href={`mailto:${contactInfo.email.general}`} className="text-sm text-forest-700 hover:underline">
+                  <a href={`mailto:${contactInfo.email.general}`} className="text-sm text-forest-700 link-grow">
                     {contactInfo.email.general}
                   </a>
                   <p className="text-xs text-charcoal-500">Placeholder pending confirmation</p>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
+              </StaggerItem>
+              <StaggerItem as="li" className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Phone</p>
                   <p className="text-sm text-charcoal-700">{contactInfo.phone}</p>
                   <p className="text-xs text-charcoal-500">Placeholder pending confirmation</p>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
+              </StaggerItem>
+              <StaggerItem as="li" className="flex items-start gap-3">
                 <Newspaper className="mt-0.5 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Media enquiries</p>
-                  <a href={`mailto:${contactInfo.email.media}`} className="text-sm text-forest-700 hover:underline">
+                  <a href={`mailto:${contactInfo.email.media}`} className="text-sm text-forest-700 link-grow">
                     {contactInfo.email.media}
                   </a>{" "}
                   <span className="text-xs text-charcoal-500">(placeholder)</span>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
+              </StaggerItem>
+              <StaggerItem as="li" className="flex items-start gap-3">
                 <Handshake className="mt-0.5 h-5 w-5 shrink-0 text-forest-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Partnership enquiries</p>
                   <p className="text-sm text-charcoal-700">
                     Use our{" "}
-                    <Link href="/partner-with-us" className="text-forest-700 hover:underline">
+                    <Link href="/partner-with-us" className="text-forest-700 link-grow">
                       Partner With Us
                     </Link>{" "}
                     form for funding, research and implementation partnerships.
                   </p>
                 </div>
-              </li>
-              <li className="radius-organic-2 flex items-start gap-3 bg-clay-100 p-4">
+              </StaggerItem>
+              <StaggerItem as="li" className="radius-organic-2 flex items-start gap-3 bg-clay-100 p-4">
                 <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-clay-600" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-charcoal-900">Safeguarding concern</p>
                   <p className="text-sm text-charcoal-700">
                     If you need to report a safeguarding concern, see our{" "}
-                    <Link href="/safeguarding" className="text-forest-700 hover:underline">
+                    <Link href="/safeguarding" className="text-forest-700 link-grow">
                       Safeguarding page
                     </Link>{" "}
                     for the reporting pathway, or select “Safeguarding concern” in the form.
                   </p>
                 </div>
-              </li>
-            </ul>
+              </StaggerItem>
+            </StaggerGroup>
 
             <h2 className="mt-8 text-sm font-semibold uppercase tracking-wide text-forest-800">Follow us</h2>
             <ul className="mt-3 flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <li key={social.label}>
-                  <a href={social.href} className="text-sm text-forest-700 hover:underline">
+                  <a href={social.href} className="text-sm text-forest-700 link-grow">
                     {social.label}
                   </a>
                 </li>
@@ -107,12 +112,12 @@ export default function ContactPage() {
             </ul>
           </div>
 
-          <div>
+          <ScrollReveal variant="fade-right">
             <h2 className="font-heading text-2xl font-semibold text-forest-900">Send us a message</h2>
             <div className="radius-organic-1 mt-6 border border-sage-200 bg-white p-6 sm:p-8">
               <ContactForm />
             </div>
-          </div>
+          </ScrollReveal>
         </Container>
       </section>
     </>
