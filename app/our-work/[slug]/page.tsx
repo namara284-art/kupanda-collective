@@ -13,6 +13,18 @@ import { buildMetadata } from "@/lib/metadata";
 // Approved photographs, where available, keyed by programme slug. Slugs
 // without an entry fall back to ImagePlaceholder until a photo is supplied.
 const photos: Partial<Record<string, { src: string; alt: string }>> = {
+  "early-childhood-development": {
+    src: "/images/community/children-portraits.jpg",
+    alt: "Young children in a Kupanda Collective community, smiling and playing together",
+  },
+  "health-and-nurturing-care": {
+    src: "/images/community/children-mealtime.jpg",
+    alt: "Children sharing a meal together in a community setting",
+  },
+  "caregiver-livelihoods": {
+    src: "/images/community/caregiver-and-child.jpg",
+    alt: "A caregiver holding and comforting a young child among a group of women",
+  },
   "participation-and-social-cohesion": {
     src: "/images/community/assembly-close.jpg",
     alt: "Community members, including caregivers with young children, gathered for a neighbourhood meeting",

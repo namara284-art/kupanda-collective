@@ -8,6 +8,27 @@ import { CommunityQuote } from "@/components/shared/CommunityQuote";
 import { programmes } from "@/content/programmes";
 import { buildMetadata } from "@/lib/metadata";
 
+// Approved photographs, where available, keyed by programme slug. Slugs
+// without an entry fall back to the ImagePlaceholder placeholder box.
+const photos: Partial<Record<string, { src: string; alt: string }>> = {
+  "early-childhood-development": {
+    src: "/images/community/children-portraits.jpg",
+    alt: "Young children in a Kupanda Collective community, smiling and playing together",
+  },
+  "health-and-nurturing-care": {
+    src: "/images/community/children-mealtime.jpg",
+    alt: "Children sharing a meal together in a community setting",
+  },
+  "caregiver-livelihoods": {
+    src: "/images/community/caregiver-and-child.jpg",
+    alt: "A caregiver holding and comforting a young child among a group of women",
+  },
+  "participation-and-social-cohesion": {
+    src: "/images/community/meeting-circle.jpg",
+    alt: "Community members gathered together for a neighbourhood meeting",
+  },
+};
+
 export const metadata: Metadata = buildMetadata({
   title: "Our Work",
   description:
@@ -38,9 +59,11 @@ export default function OurWorkPage() {
               title={programme.title}
               body={programme.summary}
               cta={{ label: "Explore More", href: `/our-work/${programme.slug}` }}
-              image={{
-                alt: `${programme.title} in practice, photograph to be supplied by Kupanda Collective`,
-              }}
+              image={
+                photos[programme.slug] ?? {
+                  alt: `${programme.title} in practice, photograph to be supplied by Kupanda Collective`,
+                }
+              }
             />
             {index === 1 ? (
               <div className="bg-forest-900 py-16 text-center sm:py-20">

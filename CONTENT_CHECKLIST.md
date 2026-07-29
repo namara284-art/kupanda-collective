@@ -29,16 +29,22 @@ needs Kupanda Collective's confirmed information before the site goes live. Sear
 - [ ] Any institutional affiliations Kupanda wants listed
 
 ## Photography
-- [x] Three photographs supplied and placed: `public/images/community/gathering-dance.jpg` (homepage hero),
-      `assembly-wide.jpg` (homepage Neighborhood Assemblies section), and `assembly-close.jpg` (Participation
-      and Social Cohesion programme page).
-- [x] `assembly-wide.jpg` and `assembly-close.jpg` show identifiable children, including an infant and a
-      toddler. Confirmed by Kupanda (2026-07-29): guardian consent is in place for these images.
-- [ ] Verified, rights-cleared photographs still needed for: meaning section, three-generation return, and the
-      remaining 4 programme pillar pages under `/our-work/[slug]`. Every remaining image slot is a placeholder
-      (`components/shared/ImagePlaceholder.tsx`) with the required alt text already drafted; see §5c of
-      README.md for how to swap them in.
-- [ ] Photo credits/attribution for the three supplied photographs (none is currently recorded in the codebase)
+- [x] Eight photographs supplied and placed: `public/images/community/gathering-dance.jpg` (homepage hero),
+      `assembly-wide.jpg` (homepage Neighborhood Assemblies section), `assembly-close.jpg` (Participation and
+      Social Cohesion programme page and Our Work overview split), `children-portraits.jpg` (Early Childhood
+      Development, Our Work overview and pillar page), `children-mealtime.jpg` (Health and Integrated Nurturing
+      Care, Our Work overview and pillar page), `caregiver-and-child.jpg` (Caregiver Livelihoods, Our Work
+      overview and pillar page), `meeting-circle.jpg` (Participation and Social Cohesion, Our Work overview
+      split), and `children-playing.jpg` (About page).
+- [x] `assembly-wide.jpg`, `assembly-close.jpg`, `children-portraits.jpg`, `children-mealtime.jpg`,
+      `caregiver-and-child.jpg`, `meeting-circle.jpg` and `children-playing.jpg` show identifiable children.
+      Confirmed by Kupanda (2026-07-29): guardian consent is in place for all supplied images.
+- [ ] Verified, rights-cleared photograph still needed for the Evidence, Learning and Policy Influence pillar
+      (Our Work overview and `/our-work/evidence-learning-and-policy`), and for the homepage meaning and
+      three-generation return sections. Every remaining image slot is a placeholder
+      (`components/shared/ImagePlaceholder.tsx`, pass a `src` in the `ImageSlot` once a photo is supplied) with
+      the required alt text already drafted; see §5c of README.md for how to swap them in.
+- [ ] Photo credits/attribution for the eight supplied photographs (none is currently recorded in the codebase)
 
 ## Community stories
 - [ ] At least one consented, reviewed community story for the "Stories from the community" homepage section

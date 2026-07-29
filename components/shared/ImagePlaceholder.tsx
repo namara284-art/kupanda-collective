@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -8,13 +9,16 @@ export type ImageSlot = {
   caption?: string;
   /** Rights/attribution metadata, not necessarily rendered publicly. */
   credit?: string;
+  /** Approved photograph path. When present, renders the image instead of the placeholder. */
+  src?: string;
+  sizes?: string;
 };
 
 /**
- * Placeholder for a future approved, consented photograph. Replace with
- * next/image once Kupanda supplies rights-cleared images. See
- * CONTENT_CHECKLIST.md. Keeping a consistent placeholder (rather than a
- * remote stock image) avoids licensing risk and broken links.
+ * Placeholder for a future approved, consented photograph, or the approved
+ * photograph itself once `slot.src` is supplied. See CONTENT_CHECKLIST.md.
+ * Keeping a consistent placeholder (rather than a remote stock image) avoids
+ * licensing risk and broken links.
  */
 export function ImagePlaceholder({
   slot,
@@ -27,18 +31,30 @@ export function ImagePlaceholder({
 }) {
   return (
     <figure className={cn("overflow-hidden rounded-2xl", className)}>
-      <div
-        className={cn(
-          "flex flex-col items-center justify-center gap-3 border border-dashed border-sage-300 bg-sage-100 px-6 text-center",
-          aspect
-        )}
-        role="img"
-        aria-label={slot.alt}
-      >
-        <ImageIcon className="h-8 w-8 text-forest-500" aria-hidden="true" />
-        <p className="max-w-xs text-sm font-medium text-forest-700">{slot.alt}</p>
-        <p className="text-xs text-charcoal-500">Image placeholder: awaiting approved photograph</p>
-      </div>
+      {slot.src ? (
+        <div className={cn("relative", aspect)}>
+          <Image
+            src={slot.src}
+            alt={slot.alt}
+            fill
+            sizes={slot.sizes ?? "(min-width: 1024px) 50vw, 100vw"}
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "flex flex-col items-center justify-center gap-3 border border-dashed border-sage-300 bg-sage-100 px-6 text-center",
+            aspect
+          )}
+          role="img"
+          aria-label={slot.alt}
+        >
+          <ImageIcon className="h-8 w-8 text-forest-500" aria-hidden="true" />
+          <p className="max-w-xs text-sm font-medium text-forest-700">{slot.alt}</p>
+          <p className="text-xs text-charcoal-500">Image placeholder: awaiting approved photograph</p>
+        </div>
+      )}
       {slot.caption ? (
         <figcaption className="mt-2 text-sm text-charcoal-500">
           {slot.caption}

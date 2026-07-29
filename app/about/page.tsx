@@ -63,7 +63,10 @@ export default function AboutPage() {
         <ImagePlaceholder
           className="mb-16"
           aspect="aspect-[16/9]"
-          slot={{ alt: "Community life in a Kupanda Collective programme area, photograph to be supplied" }}
+          slot={{
+            src: "/images/community/children-playing.jpg",
+            alt: "Children playing together in a Kupanda Collective community, near a traditional thatched-roof structure",
+          }}
         />
 
         <section aria-labelledby="problem-heading" className="mb-16">
