@@ -70,10 +70,7 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
           <span className="mt-6 flex h-12 w-12 items-center justify-center rounded-full bg-forest-700 text-cream-50">
             <Icon className="h-6 w-6" aria-hidden="true" />
           </span>
-          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-forest-600">
-            Pillar {index + 1} of {programmes.length}
-          </p>
-          <h1 className="mt-2 max-w-3xl text-balance text-[clamp(2rem,1.6rem+1.8vw,3.2rem)] font-semibold text-forest-900">
+          <h1 className="mt-4 max-w-3xl text-balance text-[clamp(2rem,1.6rem+1.8vw,3.2rem)] font-semibold text-forest-900">
             {programme.title}
           </h1>
           <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-charcoal-700">{programme.summary}</p>

@@ -40,7 +40,6 @@ export default function OurWorkPage() {
               id={programme.slug}
               tone={index % 2 === 0 ? "cream" : "sage"}
               reverse={index % 2 === 1}
-              eyebrow={`Pillar ${index + 1} of 5`}
               title={programme.title}
               body={programme.summary}
               cta={{ label: "Read the full pillar", href: `/our-work/${programme.slug}` }}
