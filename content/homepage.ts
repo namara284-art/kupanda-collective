@@ -44,7 +44,6 @@ export const ecosystem = {
 };
 
 export const modelPathway = {
-  eyebrow: "How the model moves",
   heading: "From community voice to stronger families",
   steps: [
     "Community voice",

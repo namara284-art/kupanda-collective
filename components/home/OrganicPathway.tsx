@@ -8,12 +8,7 @@ export function OrganicPathway() {
   return (
     <section className="bg-cream-100 py-20 sm:py-24" aria-labelledby="pathway-heading">
       <Container>
-        <SectionHeading
-          id="pathway-heading"
-          eyebrow={modelPathway.eyebrow}
-          title={modelPathway.heading}
-          align="center"
-        />
+        <SectionHeading id="pathway-heading" title={modelPathway.heading} align="center" />
 
         {/* Desktop: continuous organic line, alternating label depth */}
         <div className="relative mt-16 hidden lg:block">
