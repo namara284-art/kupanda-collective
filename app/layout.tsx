@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { LayeredFooter } from "@/components/layout/LayeredFooter";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { siteConfig } from "@/content/site-settings";
 
@@ -11,12 +11,14 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   axes: ["opsz"],
+  weight: "variable",
 });
 
-const inter = Inter({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-source-sans",
   display: "swap",
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +54,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${sourceSans.variable}`}>
       <body className="flex min-h-screen flex-col bg-cream-50 text-charcoal-900">
         <script
           type="application/ld+json"
@@ -63,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content" className="flex-1">
           {children}
         </main>
-        <Footer />
+        <LayeredFooter />
       </body>
     </html>
   );

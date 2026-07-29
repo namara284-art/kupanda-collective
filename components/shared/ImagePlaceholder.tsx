@@ -12,7 +12,7 @@ export type ImageSlot = {
 
 /**
  * Placeholder for a future approved, consented photograph. Replace with
- * next/image once Kupanda supplies rights-cleared images — see
+ * next/image once Kupanda supplies rights-cleared images. See
  * CONTENT_CHECKLIST.md. Keeping a consistent placeholder (rather than a
  * remote stock image) avoids licensing risk and broken links.
  */
@@ -37,12 +37,12 @@ export function ImagePlaceholder({
       >
         <ImageIcon className="h-8 w-8 text-forest-500" aria-hidden="true" />
         <p className="max-w-xs text-sm font-medium text-forest-700">{slot.alt}</p>
-        <p className="text-xs text-charcoal-500">Image placeholder — awaiting approved photograph</p>
+        <p className="text-xs text-charcoal-500">Image placeholder: awaiting approved photograph</p>
       </div>
       {slot.caption ? (
         <figcaption className="mt-2 text-sm text-charcoal-500">
           {slot.caption}
-          {slot.credit ? <span className="text-charcoal-500/70"> — {slot.credit}</span> : null}
+          {slot.credit ? <span className="text-charcoal-500/70"> ({slot.credit})</span> : null}
         </figcaption>
       ) : null}
     </figure>

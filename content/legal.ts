@@ -3,7 +3,7 @@
 // legal counsel, before public launch. See CONTENT_CHECKLIST.md.
 
 export const privacyDraft = {
-  updated: "Draft — not yet approved for launch",
+  updated: "Draft: not yet approved for launch",
   sections: [
     {
       heading: "Status of this notice",
@@ -29,7 +29,7 @@ export const privacyDraft = {
 };
 
 export const safeguardingDraft = {
-  updated: "Draft — not yet approved for launch",
+  updated: "Draft: not yet approved for launch",
   sections: [
     {
       heading: "Our commitment",
@@ -41,7 +41,7 @@ export const safeguardingDraft = {
     },
     {
       heading: "Stories, photographs and consent",
-      body: "Kupanda Collective will only publish stories, quotes or photographs of community members — including children — once informed consent has been documented from the individual or, for children, their guardian. No community story appears on this site until that process is complete.",
+      body: "Kupanda Collective will only publish stories, quotes or photographs of community members, including children, once informed consent has been documented from the individual or, for children, their guardian. No community story appears on this site until that process is complete.",
     },
     {
       heading: "Protecting identities",
@@ -55,7 +55,7 @@ export const safeguardingDraft = {
 };
 
 export const termsDraft = {
-  updated: "Draft — not yet approved for launch",
+  updated: "Draft: not yet approved for launch",
   sections: [
     {
       heading: "Status of this page",

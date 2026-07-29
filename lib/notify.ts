@@ -2,7 +2,7 @@
 //
 // No email or database provider is configured in this build (see README.md
 // "Configure contact forms"). This function currently only logs that a
-// submission was RECEIVED — it never logs the submission's content, since
+// submission was RECEIVED. It never logs the submission's content, since
 // form bodies may contain personal data and must not end up in application
 // logs or source control.
 //

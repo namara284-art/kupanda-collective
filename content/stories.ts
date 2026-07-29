@@ -5,7 +5,7 @@
 // entries with real content until:
 //   1. Informed consent has been obtained for any story, quote or photograph
 //      of a named or identifiable individual (see /safeguarding).
-//   2. Children's identities are protected — no full names or identifying
+//   2. Children's identities are protected: no full names or identifying
 //      details of children without documented guardian consent.
 //   3. Photographs have verified rights/credit information.
 //   4. Content has been reviewed by Kupanda Collective before publication.
@@ -71,7 +71,7 @@ export const storyPlaceholders: StoryCard[] = [
     title: "Costing childcare in protracted displacement",
     category: "Research and Learning",
     summary:
-      "Placeholder for updates from the costing and outcomes study planned under the Childcare Workforce Initiative.",
+      "Placeholder for updates from future costing and outcomes research on community-led childcare programming.",
     isPlaceholder: true,
     statusLabel: "Forthcoming",
   },

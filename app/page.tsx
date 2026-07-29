@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/home/Hero";
-import { PositioningSection } from "@/components/home/PositioningSection";
-import { ProgrammePillars } from "@/components/home/ProgrammePillars";
-import { FlagshipFeature } from "@/components/home/FlagshipFeature";
-import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
-import { ModelPathway } from "@/components/home/ModelPathway";
-import { CommunityVoiceSection } from "@/components/home/CommunityVoiceSection";
-import { PartnershipCtaSection } from "@/components/home/PartnershipCtaSection";
-import { NewsletterSignup } from "@/components/home/NewsletterSignup";
+import { OrganicHero } from "@/components/home/OrganicHero";
+import { MeaningSection } from "@/components/home/MeaningSection";
+import { ThreeGenerationReturn } from "@/components/home/ThreeGenerationReturn";
+import { GrowthEcosystem } from "@/components/home/GrowthEcosystem";
+import { OrganicPathway } from "@/components/home/OrganicPathway";
+import { AssembliesSection } from "@/components/home/AssembliesSection";
+import { StoryReel } from "@/components/home/StoryReel";
+import { PartnershipInvitation } from "@/components/home/PartnershipInvitation";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -20,15 +19,14 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <PositioningSection />
-      <ProgrammePillars />
-      <FlagshipFeature />
-      <ImpactStatsSection />
-      <ModelPathway />
-      <CommunityVoiceSection />
-      <PartnershipCtaSection />
-      <NewsletterSignup />
+      <OrganicHero />
+      <MeaningSection />
+      <ThreeGenerationReturn />
+      <GrowthEcosystem />
+      <OrganicPathway />
+      <AssembliesSection />
+      <StoryReel />
+      <PartnershipInvitation />
     </>
   );
 }

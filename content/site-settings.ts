@@ -9,7 +9,7 @@ export const siteConfig = {
   name: "Kupanda Collective",
   shortName: "Kupanda",
   tagline: "Ascending to Self-Reliance",
-  domain: "https://www.kupandacollective.org", // PLACEHOLDER — replace with final domain
+  domain: "https://www.kupandacollective.org", // PLACEHOLDER, replace with final domain
   description:
     "Kupanda Collective strengthens community-led systems connecting childcare, caregiver livelihoods, health and social cohesion for refugee and host communities in Uganda.",
   locale: "en_UG",
@@ -39,13 +39,25 @@ export const socialLinks = [
 export type NavLink = {
   label: string;
   href: string;
+  /** Optional submenu, e.g. the programme pages under "Our Work". */
+  children?: NavLink[];
 };
 
 export const primaryNav: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Our Work", href: "/our-work" },
-  { label: "Childcare Workforce Initiative", href: "/childcare-workforce-initiative" },
+  {
+    label: "Our Work",
+    href: "/our-work",
+    children: [
+      { label: "Overview", href: "/our-work" },
+      { label: "Early Childhood Development", href: "/our-work/early-childhood-development" },
+      { label: "Health and Nurturing Care", href: "/our-work/health-and-nurturing-care" },
+      { label: "Caregiver Livelihoods", href: "/our-work/caregiver-livelihoods" },
+      { label: "Participation and Social Cohesion", href: "/our-work/participation-and-social-cohesion" },
+      { label: "Evidence and Policy Influence", href: "/our-work/evidence-learning-and-policy" },
+    ],
+  },
   { label: "Stories & Learning", href: "/stories-and-learning" },
   { label: "Contact", href: "/contact" },
 ];
@@ -58,7 +70,13 @@ export const partnerCta: NavLink = {
 export const footerLinks: { title: string; links: NavLink[] }[] = [
   {
     title: "Explore",
-    links: primaryNav,
+    links: [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about" },
+      { label: "Our Work", href: "/our-work" },
+      { label: "Stories & Learning", href: "/stories-and-learning" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
   {
     title: "Organisation",

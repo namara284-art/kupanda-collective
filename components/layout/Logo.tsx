@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={className ?? "flex items-center gap-2"}
-      aria-label={`${siteConfig.name} — home`}
+      aria-label={`${siteConfig.name} home`}
     >
       <Image
         src="/images/logo/kupanda-logo-full-color.png"

@@ -1,36 +1,38 @@
-# Kupanda Collective — Website
+# Kupanda Collective Website
 
 A production-ready marketing and information website for **Kupanda Collective**, a Uganda-based, women-led NGO
 working with refugee and host communities on early childhood development, caregiver livelihoods, health, and
 community-led social cohesion.
 
-This README is written for whoever maintains the site next — a developer, a content editor, or Kupanda staff.
+This README is written for whoever maintains the site next: a developer, a content editor, or Kupanda staff.
 
 ---
 
 ## 1. What was built
 
-- 10 routes: Home, About Us, Our Work, Childcare Workforce Initiative, Stories & Learning, Partner With Us,
-  Contact, Privacy, Safeguarding, Terms of Use — plus a custom 404 page.
+- Routes: Home, About Us, Our Work (overview plus one page per programme pillar), Stories & Learning, Partner
+  With Us, Contact, Privacy, Safeguarding, Terms of Use, plus a custom 404 page.
 - 3 form-handling API routes (contact, partnership enquiry, newsletter sign-up), all running in a documented
   **demonstration mode** until a real email/notification service is configured (see §7).
 - A typed content model under `/content` so text, figures, navigation and contact details can be edited without
   touching component code.
-- A design system derived programmatically from the Kupanda Collective logo (see §4).
+- A distinct, editorial visual system derived from the Kupanda Collective logo (see §4): asymmetrical hero,
+  a connected programme "ecosystem" instead of a card grid, an organic growth-line pathway, alternating
+  editorial layouts for programme pages, and a layered footer.
 - SEO metadata, sitemap, robots.txt, Open Graph image generation and Organization/Breadcrumb structured data.
 - Accessibility features targeting WCAG 2.2 AA (see §9).
 
 ## 2. Technology used
 
 - **Next.js 16** (App Router, Turbopack build), **React 19**, **TypeScript**
-- **Tailwind CSS v4** (CSS-first `@theme` configuration — see `app/globals.css`)
+- **Tailwind CSS v4** (CSS-first `@theme` configuration, see `app/globals.css`)
 - **Zod** for form validation (shared client + server schemas)
 - **lucide-react** for icons
-- **next/font** for self-hosted Google Fonts (Fraunces + Inter — no runtime font requests to Google)
+- **next/font** for self-hosted Google Fonts (Fraunces + Source Sans 3, no runtime font requests to Google)
 - **next/og** (`ImageResponse`) for a dynamically generated social share image
 
 No database, CMS or email service is wired in. All of that is designed as clearly documented "bring your own
-service" integration points (§6–§8).
+service" integration points (§6 to §8).
 
 ## 3. Project structure
 
@@ -38,20 +40,20 @@ service" integration points (§6–§8).
 app/                          Routes (Next.js App Router)
   layout.tsx                  Root layout: fonts, header, footer, skip link, JSON-LD
   page.tsx                    Homepage
-  about/, our-work/, ...      One folder per route
+  about/, our-work/, our-work/[slug]/, ...   One folder per route
   api/contact|partner|newsletter/route.ts   Form-handling API routes
   sitemap.ts, robots.ts       Generated SEO files
   opengraph-image.tsx         Dynamic social share image
 
 components/
-  layout/                     Header, MobileMenu (inside Header), Footer, SkipLink, Logo
+  layout/                     Header (incl. submenu + mobile menu), LayeredFooter, SkipLink, Logo
   ui/                         Container, SectionHeading, Button, ImpactStat
-  home/                       Homepage-only sections (Hero, FlagshipFeature, ...)
-  programme/                  Programme cards, pillar sections, systems diagram
-  initiative/                 Timeline, ResultsTable, BudgetTable, ComponentCard
+  home/                       Homepage-only sections (OrganicHero, GrowthEcosystem, StoryReel, ...)
+  programme/                  EditorialSplit, per-programme page layout pieces
   stories/                    ArticleCard, CategoryFilter, StoriesGrid
   forms/                      ContactForm, PartnerForm, shared FormField primitives
-  shared/                     Breadcrumbs, Accordion, ImagePlaceholder, DownloadCard, etc.
+  shared/                     Breadcrumbs, Accordion, ImagePlaceholder, DownloadCard, FieldNote,
+                               CommunityQuote, EmptyState, LegalPageBody
 
 content/                      ALL editable copy and structured data (see §5)
 lib/                          cn, metadata helper, zod schemas, rate limiter, notify adapter
@@ -69,17 +71,22 @@ Brand colours were extracted **programmatically** from the supplied logo (pixel-
 | `cream-50/100/200` | `#fefdfb` / `#faf6ec` / `#f3ecda` | Supporting warm neutral |
 | `charcoal-900/700/500` | `#22241f` / `#3d4038` / `#62675c` | Body copy / neutral text |
 | `sage-100/200/300` | `#eef3ea` / `#e0e9da` / `#c7d6bd` | Backgrounds, borders |
-| `clay-600/500/100` | `#a85a34` / `#bf6d43` / `#f3e3d7` | Restrained warm accent |
+| `clay-700/600/500/200/100` | `#8a4a2a` ... `#f3e3d7` | Warm accent, used in full panels for human/community moments |
 
 All tokens live in `app/globals.css` under `@theme inline` (Tailwind v4's CSS-first config) and are used as
 Tailwind utilities, e.g. `bg-forest-700`, `text-charcoal-700`.
 
-**Typography:** Fraunces (serif, headings) + Inter (sans, body/UI), both self-hosted via `next/font/google` —
-see `app/layout.tsx`. Body text is fluid (`clamp()`), roughly 16–19px depending on viewport.
+**Typography:** Fraunces (variable serif, headings, quotations, display statements) at weights 500 to 600,
+plus Source Sans 3 (sans, body/navigation/buttons/stats) at 400/600/700, both self-hosted via
+`next/font/google`, see `app/layout.tsx`. Body text is fluid (`clamp()`), roughly 16 to 19px depending on
+viewport.
 
-**Logo usage:** the original logo file is untouched at `public/images/logo/kupanda-logo-full-color.png`. Do not
-recolour, stretch or recreate it. A square icon mark (`kupanda-mark.png`, plus derived favicon/app-icon sizes)
-was cropped and padded from the same source file — see `app/icon.png`, `app/apple-icon.png`, `public/favicon.ico`.
+**Logo usage:** the master logo file lives at `public/images/logo/kupanda-logo-full-color.png` with its
+background made transparent (the source export had an opaque white background baked in; that has been
+removed programmatically, not redrawn, so the mark itself is untouched). A reversed white lockup
+(`kupanda-logo-white.png`) is used only where the header sits transparently over the homepage hero image.
+Square icon marks (`kupanda-mark.png`, plus derived favicon/app-icon sizes) were cropped and padded from the
+same source. Do not recolour, stretch or redraw any of these.
 
 ## 5. How to update page content
 
@@ -87,16 +94,15 @@ Almost everything visible on the site is data, not markup. Look in `/content` fi
 
 | File | Controls |
 |---|---|
-| `site-settings.ts` | Nav links, "Partner With Us" CTA, footer links, contact placeholders, social links |
-| `programmes.ts` | The 5 programme pillars (homepage cards + Our Work full sections) |
-| `initiative.ts` | Everything on the Childcare Workforce Initiative page: gap, model, 5 components, 3-year pathway, results table, budget table, disclaimers |
-| `homepage.ts` | Hero, positioning section, flagship feature, impact stats, model pathway, community-voice placeholder, partnership CTA, newsletter copy |
+| `site-settings.ts` | Nav links (including the Our Work submenu), "Partner With Us" CTA, footer links, contact placeholders, social links |
+| `programmes.ts` | The 5 programme pillars: homepage ecosystem, Our Work overview, and each `/our-work/[slug]` page |
+| `homepage.ts` | Hero, meaning section, three-generation return, ecosystem intro, pathway steps, assemblies section, stories reel intro, partnership invitation, newsletter copy |
 | `about.ts` | About Us page sections |
-| `partnership.ts` | Partnership pathways + the "area of interest" dropdown on the Partner form |
+| `partnership.ts` | Partnership pathways, the Partner page intro copy, and the "area of interest" dropdown |
 | `stories.ts` | Stories & Learning placeholder cards (see §5a) |
 | `legal.ts` | Draft Privacy / Safeguarding / Terms copy |
 
-Editing text, a target number, or a link almost never requires touching a component — change the value in
+Editing text, a target number, or a link almost never requires touching a component: change the value in
 `/content` and the page updates.
 
 ### 5a. How to add a story
@@ -105,7 +111,7 @@ Editing text, a target number, or a link almost never requires touching a compon
 
 1. Confirm consent and safeguarding review are complete (see `/safeguarding` and the editorial note at the top
    of `content/stories.ts`).
-2. Duplicate an entry in `storyPlaceholders`, or — once the archive grows past a handful of entries — migrate to
+2. Duplicate an entry in `storyPlaceholders`, or, once the archive grows past a handful of entries, migrate to
    MDX files under a new `content/stories/*.mdx` directory with frontmatter (`title`, `slug`, `summary`,
    `publishedAt`, `author`, `category`, `featuredImage`, `imageAlt`, `imageCredit`, `download`, `draft`,
    `seoDescription`) and update `StoriesGrid`/`ArticleCard` to read from the filesystem instead of the array.
@@ -119,20 +125,19 @@ Use the `DownloadCard` component (`components/shared/DownloadCard.tsx`). It supp
 
 ### 5c. How to replace images
 
-Every photo on the site is currently an `ImagePlaceholder` (`components/shared/ImagePlaceholder.tsx`) —
-a labelled placeholder box, not a broken or stock image. To replace one:
+Every photo on the site is currently an `ImagePlaceholder` (`components/shared/ImagePlaceholder.tsx`), a
+labelled placeholder box, not a broken or stock image. To replace one:
 
 1. Add the approved, rights-cleared image to `/public/images/...`.
 2. Swap the `<ImagePlaceholder slot={{ alt, caption, credit }} />` usage for a `next/image` `<Image>` with the
    same `alt` text (required), and add `caption`/`credit` as visible text if relevant.
-3. Keep `alt` descriptive and specific — see the Photography Direction notes in the original project brief for
-   tone (dignified, consented, Uganda-specific, no staged stock photography).
+3. Keep `alt` descriptive and specific: dignified, consented, Uganda-specific, no staged stock photography.
 
 ## 6. Configuring contact / partnership forms
 
 All three forms (`Contact`, `Partner`, `Newsletter`) currently run in **demonstration mode**: submissions are
 validated (client + server, via `lib/validation.ts`), rate-limited, checked against a honeypot field, and
-acknowledged with a success message — but nothing is emailed or stored anywhere. The API routes never log
+acknowledged with a success message, but nothing is emailed or stored anywhere. The API routes never log
 submission content (see `lib/notify.ts`).
 
 To connect a real destination:
@@ -141,10 +146,10 @@ To connect a real destination:
    or your own database.
 2. Implement the call inside `lib/notify.ts` (`notify()`), using a server-only environment variable for any API
    key (see `.env.example`). Do **not** expose the key with a `NEXT_PUBLIC_` prefix.
-3. The three API routes (`app/api/contact|partner|newsletter/route.ts`) do not need to change — they already
+3. The three API routes (`app/api/contact|partner|newsletter/route.ts`) do not need to change: they already
    call `notify()`.
 4. Replace the in-memory rate limiter (`lib/rate-limit.ts`) with a durable one (Upstash Redis, Vercel KV, or an
-   edge/WAF rule) before public launch — the current one resets on every server restart and does not share
+   edge/WAF rule) before public launch: the current one resets on every server restart and does not share
    state across serverless instances.
 
 ## 7. Configuring newsletter sign-up
@@ -155,8 +160,8 @@ To connect a provider (Mailchimp, Buttondown, ConvertKit, etc.):
 1. Add the provider's API key/audience ID to `.env.local` (see `.env.example`).
 2. Inside the newsletter route (or via `lib/notify.ts`), call the provider's subscribe endpoint instead of the
    demo log line.
-3. Update the success copy in `content/homepage.ts` (`newsletter`) once live — the current copy explicitly
-   says "no live email platform is connected yet."
+3. Update the success copy in `content/homepage.ts` (`newsletter`) once live: the current copy explicitly says
+   "no live email platform is connected yet."
 
 ## 8. Configuring analytics
 
@@ -173,18 +178,22 @@ Targets WCAG 2.2 AA:
 
 - Skip-to-content link, semantic landmarks, correct heading order per page
 - Visible focus rings (`:focus-visible`) throughout, 3px offset outline
-- Accessible mobile menu (`aria-expanded`, `aria-controls`, Escape to close, focus returns sensibly)
+- Accessible mobile menu with an accessible expandable submenu (`aria-expanded`, `aria-controls`, Escape to
+  close, focus returns sensibly)
 - All form fields have associated `<label>`s, `aria-describedby` hints/errors, and `role="alert"` error text
 - Colour is never the only signal (icons + text pair with colour throughout)
 - `prefers-reduced-motion` respected (animations/transitions disabled)
-- Data tables use `<caption>`, `scope="col"/"row"` and remain in a scrollable container instead of breaking
-  page layout on narrow screens
+- The homepage's orbital programme diagram has a `role="img"` text alternative and a fully accessible
+  expandable-row fallback below the desktop breakpoint
+- Data tables (where used) use `<caption>`, `scope="col"/"row"` and remain in a scrollable container instead
+  of breaking page layout on narrow screens
 - Images use a placeholder system that enforces descriptive alt text before any photo is added
 
 ## 10. SEO
 
 - Per-page metadata via `lib/metadata.ts` (`buildMetadata`), including canonical URLs and Open Graph/Twitter tags
-- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`
+- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`, including one entry per
+  programme page
 - `app/opengraph-image.tsx` generates a branded social-share image at request time (no static asset to maintain)
 - JSON-LD: `NGO`/Organization schema in the root layout, `BreadcrumbList` schema on every inner page
 
@@ -203,11 +212,11 @@ Visit http://localhost:3000.
 ## 12. Development commands
 
 ```bash
-npm run dev         # local dev server (Turbopack)
-npm run build        # production build
-npm run start         # serve the production build locally
-npm run lint          # ESLint (eslint-config-next, flat config)
-npm run typecheck    # tsc --noEmit
+npm run dev          # local dev server (Turbopack)
+npm run build         # production build
+npm run start          # serve the production build locally
+npm run lint           # ESLint (eslint-config-next, flat config)
+npm run typecheck     # tsc --noEmit
 ```
 
 ## 13. Production build
@@ -221,22 +230,22 @@ The build has been verified to compile cleanly, pass `next lint`, and pass `tsc 
 
 ## 14. Environment variables
 
-Copy `.env.example` to `.env.local` and fill in only what you've configured — every variable is optional and
+Copy `.env.example` to `.env.local` and fill in only what you've configured: every variable is optional and
 the site works fully in demo mode without any of them. See `.env.example` for the full list and where each one
 is consumed.
 
 ## 15. Deployment
 
-The site is a standard Next.js App Router project and deploys to any Next.js-compatible host (Vercel,
-Netlify, or a Node server via `next start`). No special build configuration is required beyond setting the
-environment variables in §14 that you choose to configure.
+The site is a standard Next.js App Router project and deploys to any Next.js-compatible host (Vercel, Netlify,
+or a Node server via `next start`). No special build configuration is required beyond setting the environment
+variables in §14 that you choose to configure.
 
 ```bash
 # Example: Vercel
 vercel deploy
 ```
 
-If deploying somewhere other than the final domain, update `siteConfig.domain` in `content/site-settings.ts` —
+If deploying somewhere other than the final domain, update `siteConfig.domain` in `content/site-settings.ts`:
 it feeds canonical URLs, the sitemap, robots.txt, and structured data.
 
 ## 16. Placeholder content still awaiting Kupanda Collective
