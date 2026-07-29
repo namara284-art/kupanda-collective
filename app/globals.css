@@ -6,9 +6,12 @@
  *   forest  #2B7246 (dominant mark colour)
  *   leaf    #A0C734 (secondary mark colour)
  * Cream, charcoal, sage and clay are supporting neutrals/accent chosen to
- * complement those two anchors.
+ * complement those two anchors. Clay is used more generously in this
+ * revision: full panels for community/human-story moments, not just thin
+ * accents, per the distinct Kupanda visual system.
  */
 :root {
+  --color-forest-950: #0e2716;
   --color-forest-900: #16391f;
   --color-forest-800: #1f4f2f;
   --color-forest-700: #2b7246;
@@ -32,8 +35,10 @@
   --color-sage-200: #e0e9da;
   --color-sage-300: #c7d6bd;
 
+  --color-clay-700: #8a4a2a;
   --color-clay-600: #a85a34;
   --color-clay-500: #bf6d43;
+  --color-clay-200: #ead9c8;
   --color-clay-100: #f3e3d7;
 
   --background: var(--color-cream-50);
@@ -41,6 +46,7 @@
 }
 
 @theme inline {
+  --color-forest-950: var(--color-forest-950);
   --color-forest-900: var(--color-forest-900);
   --color-forest-800: var(--color-forest-800);
   --color-forest-700: var(--color-forest-700);
@@ -64,15 +70,17 @@
   --color-sage-200: var(--color-sage-200);
   --color-sage-300: var(--color-sage-300);
 
+  --color-clay-700: var(--color-clay-700);
   --color-clay-600: var(--color-clay-600);
   --color-clay-500: var(--color-clay-500);
+  --color-clay-200: var(--color-clay-200);
   --color-clay-100: var(--color-clay-100);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
   --font-heading: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-source-sans);
 
   --breakpoint-xs: 22.5rem;
 }
@@ -100,6 +108,7 @@
     background: var(--color-cream-50);
     color: var(--color-charcoal-900);
     font-family: var(--font-sans);
+    font-weight: 400;
     font-size: clamp(1rem, 0.94rem + 0.25vw, 1.1875rem);
     line-height: 1.65;
   }
@@ -109,8 +118,9 @@
   h3,
   h4 {
     font-family: var(--font-heading);
+    font-weight: 600;
     color: var(--color-forest-900);
-    line-height: 1.15;
+    line-height: 1.12;
     letter-spacing: -0.01em;
   }
 
@@ -135,6 +145,7 @@
     text-wrap: balance;
   }
 
+  /* Standard editorial measure, used by most sections. */
   .content-container {
     width: 100%;
     max-width: 80rem;
@@ -142,9 +153,30 @@
     padding-inline: 1.25rem;
   }
 
+  /* Wider measure for full-bleed/asymmetrical compositions. */
+  .content-container-wide {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
   @media (min-width: 640px) {
-    .content-container {
+    .content-container,
+    .content-container-wide {
       padding-inline: 2rem;
     }
+  }
+
+  /* Organic corner radii: a softer, hand-set alternative to uniform rounded-2xl. */
+  .radius-organic-1 {
+    border-radius: 2.5rem 1.25rem 2.5rem 1.25rem;
+  }
+  .radius-organic-2 {
+    border-radius: 1.25rem 2.5rem 1.25rem 2.5rem;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
   }
 }
