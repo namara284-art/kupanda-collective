@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens derived programmatically from the Kupanda Collective logo
+ * (public/images/logo/kupanda-mark.png) via pixel-frequency extraction:
+ *   forest  #2B7246 (dominant mark colour)
+ *   leaf    #A0C734 (secondary mark colour)
+ * Cream, charcoal, sage and clay are supporting neutrals/accent chosen to
+ * complement those two anchors.
+ */
+:root {
+  --color-forest-900: #16391f;
+  --color-forest-800: #1f4f2f;
+  --color-forest-700: #2b7246;
+  --color-forest-600: #35854f;
+  --color-forest-500: #43995e;
+
+  --color-leaf-600: #7fa62a;
+  --color-leaf-500: #a0c734;
+  --color-leaf-400: #b6d75c;
+  --color-leaf-300: #cfe497;
+
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #faf6ec;
+  --color-cream-200: #f3ecda;
+
+  --color-charcoal-900: #22241f;
+  --color-charcoal-700: #3d4038;
+  --color-charcoal-500: #62675c;
+
+  --color-sage-100: #eef3ea;
+  --color-sage-200: #e0e9da;
+  --color-sage-300: #c7d6bd;
+
+  --color-clay-600: #a85a34;
+  --color-clay-500: #bf6d43;
+  --color-clay-100: #f3e3d7;
+
+  --background: var(--color-cream-50);
+  --foreground: var(--color-charcoal-900);
+}
+
+@theme inline {
+  --color-forest-900: var(--color-forest-900);
+  --color-forest-800: var(--color-forest-800);
+  --color-forest-700: var(--color-forest-700);
+  --color-forest-600: var(--color-forest-600);
+  --color-forest-500: var(--color-forest-500);
+
+  --color-leaf-600: var(--color-leaf-600);
+  --color-leaf-500: var(--color-leaf-500);
+  --color-leaf-400: var(--color-leaf-400);
+  --color-leaf-300: var(--color-leaf-300);
+
+  --color-cream-50: var(--color-cream-50);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+
+  --color-charcoal-900: var(--color-charcoal-900);
+  --color-charcoal-700: var(--color-charcoal-700);
+  --color-charcoal-500: var(--color-charcoal-500);
+
+  --color-sage-100: var(--color-sage-100);
+  --color-sage-200: var(--color-sage-200);
+  --color-sage-300: var(--color-sage-300);
+
+  --color-clay-600: var(--color-clay-600);
+  --color-clay-500: var(--color-clay-500);
+  --color-clay-100: var(--color-clay-100);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-heading: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --breakpoint-xs: 22.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background: var(--color-cream-50);
+    color: var(--color-charcoal-900);
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 0.94rem + 0.25vw, 1.1875rem);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-forest-900);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-leaf-400);
+    color: var(--color-forest-900);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-clay-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .content-container {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .content-container {
+      padding-inline: 2rem;
+    }
+  }
+}
