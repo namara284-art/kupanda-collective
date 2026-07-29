@@ -53,7 +53,6 @@ export const modelPathway = {
 };
 
 export const assemblies = {
-  eyebrow: "Community governance",
   heading: "Neighborhood Assemblies and People's Parliaments",
   body: "Families decide what is needed, how resources are used and whether services are working. Neighborhood Assemblies and People's Parliaments are Kupanda's distinctive model for community-led decision-making, not a consultation exercise added on top of programmes designed elsewhere.",
   pullQuote:

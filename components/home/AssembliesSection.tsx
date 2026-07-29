@@ -19,7 +19,6 @@ export function AssembliesSection() {
         </div>
 
         <div className="flex flex-col justify-center px-6 py-16 sm:px-12 sm:py-20 lg:px-16">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-clay-600">{assemblies.eyebrow}</p>
           <h2 id="assemblies-heading" className="text-balance text-[clamp(1.6rem,1.3rem+1.4vw,2.3rem)] font-semibold text-forest-900">
             {assemblies.heading}
           </h2>
