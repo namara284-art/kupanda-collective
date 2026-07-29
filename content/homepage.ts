@@ -8,7 +8,6 @@ export const hero = {
 };
 
 export const meaning = {
-  eyebrow: "The name",
   display: "Kupanda is a Swahili word meaning growth.",
   paragraph:
     "Kupanda Collective is building a childcare economy from the hands of women whose care has sustained refugee communities for years. We are a women-led Ugandan organisation working with refugee and host communities to turn local caregiving into skilled work, dependable childcare and viable women-led enterprises. We train caregivers and support them to earn nationally recognised credentials that travel with them wherever life takes them. We help women establish childcare services, connect young children to early learning, nutrition, health and protection, and work with government to register these services within public systems. Through Neighborhood Assemblies and People's Parliaments, families decide what is needed, how resources are used and whether services are working. Kupanda makes every investment work across generations: a child gains a safe place to learn and grow, a woman gains an income and recognised profession, and a community gains childcare infrastructure it can sustain and call its own.",

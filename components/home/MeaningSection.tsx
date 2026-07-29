@@ -14,7 +14,6 @@ export function MeaningSection() {
             <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-sage-100 text-forest-700">
               <Sprout className="h-6 w-6" aria-hidden="true" />
             </span>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-clay-600">{meaning.eyebrow}</p>
             <h2 id="meaning-heading" className="text-balance font-heading text-[clamp(2rem,1.6rem+1.8vw,3.2rem)] font-medium leading-[1.1] text-forest-900">
               {meaning.display}
             </h2>
